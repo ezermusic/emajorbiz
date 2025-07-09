@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Literacy | E-Major Biznet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-blue: #4FB3E8;
+            --dark-blue: #084B83;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--dark-blue);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(8, 75, 131, 0.2);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flow-root;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .logo-text {
+            margin-left: 10px;
+            font-weight: 700;
+        }
+        
+        .logo-text .e-major {
+            color: var(--primary-blue);
+        }
+        
+        .logo-text .biznet {
+            color: var(--dark-blue);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 12px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: #333;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-blue);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+        
+        nav ul li a.active {
+            color: var(--primary-blue);
+            font-weight: 600;
+            animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .search-social {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search {
+            margin-right: 20px;
+            position: relative;
+        }
+        
+        .search input {
+            padding: 8px 15px;
+            padding-right: 40px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+        
+        .search button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #777;
+            cursor: pointer;
+        }
+        
+        .social-icons a {
+            color: #555;
+            margin-left: 10px;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Financial Literacy Page Specific Styles */
+        .page-header {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 120px 0 60px;
+            margin-bottom: 50px;
+            background-image: linear-gradient(rgba(8, 75, 131, 0.85), rgba(8, 75, 131, 0.85)), url('images/finance-background.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Topic Categories */
+        .topic-categories {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background-color: var(--primary-blue);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .category-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            height: 100%;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .category-card:hover .category-image img {
+            transform: scale(1.05);
+        }
+        
+        .category-content {
+            padding: 25px;
+        }
+        
+        .category-content h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .category-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .category-stat {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .stat-icon {
+            margin-right: 10px;
+            color: var(--primary-blue);
+            font-size: 24px;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-right: 5px;
+        }
+        
+        .progress-indicator {
+            height: 6px;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background-color: var(--primary-blue);
+            border-radius: 3px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+        
+        .category-footer {
+            padding: 0 25px 25px;
+        }
+        
+        /* Latest Videos Section */
+        .latest-videos {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .video-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            overflow: hidden;
+        }
+        
+        .video-thumbnail iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-thumbnail .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(79, 179, 232, 0.8);
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+        }
+        
+        .video-card:hover .play-btn {
+            opacity: 1;
+        }
+        
+        .video-content {
+            padding: 25px;
+        }
+        
+        .video-content h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .video-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .key-points {
+            margin-bottom: 20px;
+        }
+        
+        .key-points h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: var(--primary-blue);
+        }
+        
+        .key-points ul {
+            padding-left: 20px;
+        }
+        
+        .key-points ul li {
+            margin-bottom: 5px;
+            position: relative;
+        }
+        
+        .resource-download {
+            display: flex;
+            align-items: center;
+            background-color: var(--light-gray);
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+        
+        .resource-download:hover {
+            background-color: rgba(79, 179, 232, 0.1);
+        }
+        
+        .resource-download i {
+            margin-right: 10px;
+            color: var(--primary-blue);
+        }
+        
+        .resource-download .resource-name {
+            flex: 1;
+        }
+        
+        .resource-download .download-btn {
+            color: var(--primary-blue);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        /* Success Stories Section */
+        .success-stories {
+            padding: 80px 0;
+        }
+        
+        .stories-container {
+            margin-top: 50px;
+        }
+        
+        .story-card {
+            display: flex;
+            margin-bottom: 40px;
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .story-image {
+            flex: 0 0 300px;
+            overflow: hidden;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .story-card:hover .story-image img {
+            transform: scale(1.05);
+        }
+        
+        .story-content {
+            flex: 1;
+            padding: 30px;
+        }
+        
+        .story-content h3 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .story-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .before-after {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .before, .after {
+            flex: 1;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        
+        .before {
+            background-color: rgba(255, 0, 0, 0.05);
+            margin-right: 10px;
+        }
+        
+        .after {
+            background-color: rgba(0, 128, 0, 0.05);
+        }
+        
+        .scenario-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .scenario-title i {
+            margin-right: 5px;
+        }
+        
+        .before .scenario-title {
+            color: #d32f2f;
+        }
+        
+        .after .scenario-title {
+            color: #388e3c;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 80px 0 20px;
+        }
+        
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-section h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-blue);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            transition: var(--transition);
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-blue);
+            transform: translateX(5px);
+        }
+        
+        .newsletter form {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .newsletter input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .newsletter button {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter button:hover {
+            background-color: #3a9bcf;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            color: #ddd;
+            font-size: 14px;
+        }
+        
+        .footer-bottom a {
+            color: var(--primary-blue);
+            transition: var(--transition);
+        }
+        
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1023px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .story-card {
+                flex-direction: column;
+            }
+            
+            .story-image {
+                flex: 0 0 auto;
+                height: 250px;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: var(--white);
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .search-social {
+                display: none;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .before-after {
+                flex-direction: column;
+            }
+            
+            .before {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-text">
+                        <span class="e-major">E-Major</span> <span class="biznet">Biznet</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gospel-music.html">Gospel Music</a></li>
+                    <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                    <li><a href="financial-literacy.html" class="active">Financial Literacy</a></li>
+                    <li><a href="business-ideas.html">Business Ideas</a></li>
+                    <li><a href="bible-teachings.html">Bible Teachings</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- <div class="search-social">
+                <div class="search">
+                    <input type="text" placeholder="Search...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div> -->
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Financial Literacy</h1>
+            <p>Building Wealth Through Biblical Principles and Practical Financial Knowledge</p>
+        </div>
+    </section>
+
+    <!-- Topic Categories -->
+    <section class="topic-categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Financial Topics</h2>
+                <p>Explore our comprehensive collection of Financial Education topics designed to help you build wealth, eliminate debt, and create a stable financial future.</p>
+            </div>
+            
+            <div class="category-grid">
+                <div class="category-card fade-in">
+                    <div class="category-image">
+                        <img src="/api/placeholder/400/320" alt="Budgeting Basics">
+                    </div>
+                    <div class="category-content">
+                        <h3>Budgeting Basics</h3>
+                        <p>Learn how to create and maintain a budget that works for your lifestyle while honoring biblical principles of stewardship.</p>
+                        <div class="category-stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="stat-number">7</div>
+                            <div class="stat-label">Videos</div>
+                        </div>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" data-progress="100"></div>
+                        </div>
+                        <p class="series-status">Complete Series</p>
+                    </div>
+                    <div class="category-footer">
+                        <a href="#" class="btn">Explore Topic</a>
+                    </div>
+                </div>
+                
+                <div class="category-card fade-in">
+                    <div class="category-image">
+                        <img src="/api/placeholder/400/320" alt="Debt Elimination">
+                    </div>
+                    <div class="category-content">
+                        <h3>Debt Elimination</h3>
+                        <p>Strategies and Biblical Wisdom for Freeing Yourself from Debt and Maintaining a Debt-free Lifestyle.</p>
+                        <div class="category-stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Videos</div>
+                        </div>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" data-progress="83"></div>
+                        </div>
+                        <p class="series-status">5 of 6 Videos Released</p>
+                    </div>
+                    <div class="category-footer">
+                        <a href="#" class="btn">Explore Topic</a>
+                    </div>
+                </div>
+                
+                <div class="category-card fade-in">
+                    <div class="category-image">
+                        <img src="/api/placeholder/400/320" alt="Investing Foundations">
+                    </div>
+                    <div class="category-content">
+                        <h3>Investing Foundations</h3>
+                        <p>Learn the basics of investing with a focus on long-term wealth building and ethical investment choices.</p>
+                        <div class="category-stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Videos</div>
+                        </div>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" data-progress="75"></div>
+                        </div>
+                        <p class="series-status">8 of 12 Videos Released</p>
+                    </div>
+                    <div class="category-footer">
+                        <a href="#" class="btn">Explore Topic</a>
+                    </div>
+                </div>
+                
+                <div class="category-card fade-in">
+                    <div class="category-image">
+                        <img src="/api/placeholder/400/320" alt="Financial Freedom">
+                    </div>
+                    <div class="category-content">
+                        <h3>Financial Freedom</h3>
+                        <p>Discover how to achieve true financial freedom through biblical principles and smart money management.</p>
+                        <div class="category-stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Videos</div>
+                        </div>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" data-progress="100"></div>
+                        </div>
+                        <p class="series-status">Complete Series</p>
+                    </div>
+                    <div class="category-footer">
+                        <a href="#" class="btn">Explore Topic</a>
+                    </div>
+                </div>
+                
+                <div class="category-card fade-in">
+                    <div class="category-image">
+                        <img src="/api/placeholder/400/320" alt="Giving & Generosity">
+                    </div>
+                    <div class="category-content">
+                        <h3>Giving & Generosity</h3>
+                        <p>Learn biblical principles of tithing, giving, and generosity that lead to both spiritual and financial abundance.</p>
+                        <div class="category-stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Videos</div>
+                        </div>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" data-progress="80"></div>
+                        </div>
+                        <p class="series-status">4 of 5 Videos Released</p>
+                    </div>
+                    <div class="category-footer">
+                        <a href="#" class="btn">Explore Topic</a>
+                    </div>
+                </div>
+                
+                <div class="category-card fade-in">
+                    <div class="category-image">
+                        <img src="/api/placeholder/400/320" alt="Financial Planning">
+                    </div>
+                    <div class="category-content">
+                        <h3>Financial Planning</h3>
+                        <p>Essential strategies for planning your financial future, from emergency funds to retirement planning.</p>
+                        <div class="category-stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Videos</div>
+                        </div>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" data-progress="50"></div>
+                        </div>
+                        <p class="series-status">3 of 6 Videos Released</p>
+                    </div>
+                    <div class="category-footer">
+                        <a href="#" class="btn">Explore Topic</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Videos -->
+    <section class="latest-videos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest Financial Literacy Videos</h2>
+                <p>Watch our newest videos on financial literacy topics to continue your journey toward financial freedom.</p>
+            </div>
+            
+            <div class="video-grid">
+                <div class="video-card fade-in">
+                    <div class="video-thumbnail">
+                        <img src="/api/placeholder/600/340" alt="Investment Strategies for Beginners>
+						<div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-content">
+                    <h3>Investment Strategies for Beginners</h3>
+                    <p>Learn the foundational principles of investing that can help you build wealth over time while aligning with biblical values.</p>
+                    <div class="key-points">
+                        <h4>Key Takeaways:</h4>
+                        <ul>
+                            <li>Understanding different investment vehicles</li>
+                            <li>Risk assessment and management</li>
+                            <li>Long-term vs. short-term investing</li>
+                            <li>Biblical principles for ethical investing</li>
+                        </ul>
+                    </div>
+                    <div class="resource-download">
+                        <i class="fas fa-file-pdf"></i>
+                        <span class="resource-name">Investment Basics Worksheet</span>
+                        <span class="download-btn">Download</span>
+                    </div>
+                    <div class="resource-download">
+                        <i class="fas fa-file-excel"></i>
+                        <span class="resource-name">Investment Calculator</span>
+                        <span class="download-btn">Download</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-card fade-in">
+                <div class="video-thumbnail">
+                    <img src="/api/placeholder/600/340" alt="Creating an Emergency Fund">
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-content">
+                    <h3>Creating an Emergency Fund</h3>
+                    <p>Discover why emergency funds are crucial to financial stability and how to build one that works for your situation.</p>
+                    <div class="key-points">
+                        <h4>Key Takeaways:</h4>
+                        <ul>
+                            <li>How much to save for emergencies</li>
+                            <li>Where to keep your emergency fund</li>
+                            <li>How to build your fund quickly</li>
+                            <li>When to use (and not use) your emergency savings</li>
+                        </ul>
+                    </div>
+                    <div class="resource-download">
+                        <i class="fas fa-file-pdf"></i>
+                        <span class="resource-name">Emergency Fund Calculator</span>
+                        <span class="download-btn">Download</span>
+                    </div>
+                    <div class="resource-download">
+                        <i class="fas fa-file-pdf"></i>
+                        <span class="resource-name">Savings Acceleration Guide</span>
+                        <span class="download-btn">Download</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-card fade-in">
+                <div class="video-thumbnail">
+                    <img src="/api/placeholder/600/340" alt="Debt Freedom Blueprint">
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-content">
+                    <h3>Debt Freedom Blueprint</h3>
+                    <p>A step-by-step plan to eliminate debt forever and build a foundation for lasting financial freedom.</p>
+                    <div class="key-points">
+                        <h4>Key Takeaways:</h4>
+                        <ul>
+                            <li>Debt prioritization strategies</li>
+                            <li>Accelerated debt payoff methods</li>
+                            <li>Avoiding debt traps and pitfalls</li>
+                            <li>Biblical perspective on debt elimination</li>
+                        </ul>
+                    </div>
+                    <div class="resource-download">
+                        <i class="fas fa-file-pdf"></i>
+                        <span class="resource-name">Debt Elimination Workbook</span>
+                        <span class="download-btn">Download</span>
+                    </div>
+                    <div class="resource-download">
+                        <i class="fas fa-file-excel"></i>
+                        <span class="resource-name">Debt Snowball Calculator</span>
+                        <span class="download-btn">Download</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-card fade-in">
+                <div class="video-thumbnail">
+                    <img src="/api/placeholder/600/340" alt="Biblical Stewardship Principles">
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-content">
+                    <h3>Biblical Stewardship Principles</h3>
+                    <p>Understand what the Bible teaches about managing money and how to apply these timeless principles to modern finances.</p>
+                    <div class="key-points">
+                        <h4>Key Takeaways:</h4>
+                        <ul>
+                            <li>Biblical money management principles</li>
+                            <li>Stewardship vs. ownership mentality</li>
+                            <li>Practical application in daily financial decisions</li>
+                            <li>Creating a legacy of financial wisdom</li>
+                        </ul>
+                    </div>
+                    <div class="resource-download">
+                        <i class="fas fa-file-pdf"></i>
+                        <span class="resource-name">Biblical Money Scriptures Guide</span>
+                        <span class="download-btn">Download</span>
+                    </div>
+                    <div class="resource-download">
+                        <i class="fas fa-file-pdf"></i>
+                        <span class="resource-name">Stewardship Assessment Tool</span>
+                        <span class="download-btn">Download</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Success Stories -->
+<section class="success-stories">
+    <div class="container">
+        <div class="section-title">
+            <h2>Financial Success Stories</h2>
+            <p>Real-life transformations from our community members who applied these financial principles.</p>
+        </div>
+        
+        <div class="stories-container">
+            <div class="story-card fade-in">
+                <div class="story-image">
+                    <img src="/api/placeholder/400/400" alt="Sarah's Success Story">
+                </div>
+                <div class="story-content">
+                    <h3>Sarah's Debt-Free Journey</h3>
+                    <p>"After following the debt elimination principles taught by E-Major Biznet, I was able to pay off $45,000 in debt in just 18 months. The biblical principles combined with practical strategies changed my financial future forever!"</p>
+                    
+                    <div class="before-after">
+                        <div class="before">
+                            <div class="scenario-title">
+                                <i class="fas fa-arrow-down"></i> Before
+                            </div>
+                            <ul>
+                                <li>$45,000 in combined debt</li>
+                                <li>Minimum payments only</li>
+                                <li>Financial stress affecting health</li>
+                                <li>No emergency savings</li>
+                            </ul>
+                        </div>
+                        <div class="after">
+                            <div class="scenario-title">
+                                <i class="fas fa-arrow-up"></i> After
+                            </div>
+                            <ul>
+                                <li>100% debt-free</li>
+                                <li>$10,000 emergency fund</li>
+                                <li>Investing 15% for retirement</li>
+                                <li>Peace of mind and financial freedom</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn">Watch Sarah's Full Story</a>
+                </div>
+            </div>
+            
+            <div class="story-card fade-in">
+                <div class="story-image">
+                    <img src="/api/placeholder/400/400" alt="Marcus & Tiffany">
+                </div>
+                <div class="story-content">
+                    <h3>Marcus & Tiffany's Financial Turnaround</h3>
+                    <p>"We were living paycheck to paycheck despite making good money. The budgeting principles and biblical wisdom from E-Major Biznet helped us completely transform our financial situation in just one year."</p>
+                    
+                    <div class="before-after">
+                        <div class="before">
+                            <div class="scenario-title">
+                                <i class="fas fa-arrow-down"></i> Before
+                            </div>
+                            <ul>
+                                <li>No budget or financial plan</li>
+                                <li>Arguments about money</li>
+                                <li>$8,000 credit card debt</li>
+                                <li>No savings or investments</li>
+                            </ul>
+                        </div>
+                        <div class="after">
+                            <div class="scenario-title">
+                                <i class="fas fa-arrow-up"></i> After
+                            </div>
+                            <ul>
+                                <li>Detailed monthly budget</li>
+                                <li>Debt-free lifestyle</li>
+                                <li>6-month emergency fund</li>
+                                <li>Regular giving and investing</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn">Watch Their Full Story</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-logo">
+            <div class="logo-text">
+                <span class="e-major" style="color: #4FB3E8;">E-Major</span> <span class="biznet" style="color: #FFFFFF;">Biznet</span>
+            </div>
+        </div>
+        
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gospel-music.html">Gospel Music</a></li>
+                    <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                    <li><a href="financial-literacy.html">Financial Literacy</a></li>
+                    <li><a href="business-ideas.html">Business Ideas</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="resources.html">Free Resources</a></li>
+                    <li><a href="resources.html#premium">Premium Resources</a></li>
+                    <li><a href="podcast.html">Podcast Episodes</a></li>
+                    <li><a href="blog.html">Blog Articles</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">YouTube Channel</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe for updates, new resources, and exclusive content.</p>
+                <div class="newsletter">
+                    <form>
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 E-Major Biznet. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu');
+    const nav = document.querySelector('nav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+    
+    // Scroll Animation
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInOnScroll = () => {
+        fadeElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementTop < windowHeight - 100) {
+                element.classList.add('active');
+            }
+        });
+    };
+    
+    // Progress Bar Animation
+    const animateProgressBars = () => {
+        const progressBars = document.querySelectorAll('.progress-bar');
+        
+        progressBars.forEach(bar => {
+            const progress = bar.getAttribute('data-progress');
+            setTimeout(() => {
+                bar.style.width = `${progress}%`;
+            }, 300);
+        });
+    };
+    
+    // Run on page load
+    window.addEventListener('load', () => {
+        fadeInOnScroll();
+        animateProgressBars();
+    });
+    
+    // Run on scroll
+    window.addEventListener('scroll', fadeInOnScroll);
+</script>

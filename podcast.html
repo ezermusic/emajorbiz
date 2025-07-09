@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast | E-Major Biznet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-light-blue: #4FB3E8;
+            --primary-white: #FFFFFF;
+            --secondary-dark-blue: #084B83;
+            --secondary-light-gray: #F5F5F5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary-dark-blue);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+        }
+        
+        .header-container {
+            display: flow-root;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo-text {
+            margin-left: 10px;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text .e-major {
+            color: var(--primary-light-blue);
+        }
+        
+        .logo-text .biznet {
+            color: var(--secondary-dark-blue);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--secondary-dark-blue);
+            font-weight: 500;
+			font-size: 15px;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--primary-light-blue);
+        }
+        
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-light-blue);
+            animation: blinkingUnderline 2s infinite;
+        }
+        
+        @keyframes blinkingUnderline {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-bar {
+            margin-right: 20px;
+            position: relative;
+        }
+        
+        .search-bar input {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar input:focus {
+            border-color: var(--primary-light-blue);
+            box-shadow: 0 0 5px rgba(79, 179, 232, 0.5);
+        }
+        
+        .search-bar button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .social-icons a {
+            color: var(--secondary-dark-blue);
+            margin-left: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-light-blue);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Main Content Styles */
+        main {
+            min-height: calc(100vh - 180px);
+            padding: 0 5%;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin: 3rem 0;
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-light-blue);
+        }
+        
+        /* Latest Episode Section */
+        .latest-episode {
+            background-color: var(--secondary-light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .latest-episode-header {
+            background-color: var(--secondary-dark-blue);
+            padding: 1.5rem;
+            color: var(--primary-white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .latest-episode-header h2 {
+            color: var(--primary-white);
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .latest-episode-badge {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .episode-content {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+        
+        .episode-media {
+            width: 100%;
+        }
+        
+        .episode-thumbnail {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .episode-thumbnail img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .episode-thumbnail img:hover {
+            transform: scale(1.05);
+        }
+        
+        .audio-player {
+            width: 100%;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+        }
+        
+        .audio-player audio {
+            width: 100%;
+        }
+        
+        .episode-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .episode-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-dark-blue);
+        }
+        
+        .episode-meta {
+            color: #666;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .episode-meta span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .episode-meta i {
+            margin-right: 5px;
+            color: var(--primary-light-blue);
+        }
+        
+        .episode-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .episode-timestamps {
+            background-color: #e0e0e0;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timestamp-heading {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--secondary-dark-blue);
+        }
+        
+        .timestamps-list {
+            list-style-type: none;
+        }
+        
+        .timestamps-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+        }
+        
+        .timestamps-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .timestamp {
+            color: var(--primary-light-blue);
+            font-weight: 600;
+            margin-right: 10px;
+            min-width: 60px;
+        }
+        
+        .guest-info {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .guest-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .guest-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .guest-bio h4 {
+            margin-bottom: 5px;
+        }
+        
+        .guest-bio p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .guest-social {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .guest-social a {
+            color: var(--secondary-dark-blue);
+            transition: color 0.3s ease;
+        }
+        
+        .guest-social a:hover {
+            color: var(--primary-light-blue);
+        }
+        
+        /* Episode Archive Section */
+        .episode-archive {
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards 0.2s;
+        }
+        
+        .archive-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--secondary-light-gray);
+            padding-bottom: 1rem;
+        }
+        
+        .archive-header h2 {
+            font-size: 1.8rem;
+        }
+        
+        .archive-controls {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .archive-search {
+            position: relative;
+        }
+        
+        .archive-search input {
+            padding: 8px 15px;
+            padding-right: 35px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            outline: none;
+            width: 250px;
+        }
+        
+        .archive-search button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .archive-filter select {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            outline: none;
+            background-color: var(--primary-white);
+            cursor: pointer;
+        }
+        
+        .episode-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .episode-card {
+            background-color: var(--primary-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .episode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .episode-card-thumbnail {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .episode-card-thumbnail img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .episode-card:hover .episode-card-thumbnail img {
+            transform: scale(1.05);
+        }
+        
+        .episode-card-number {
+            position: absolute;
+            top: 1px;
+            right: 10px;
+            background-color: var(--secondary-dark-blue);
+            color: var(--primary-white);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .episode-card-content {
+            padding: 1.5rem;
+        }
+        
+        .episode-card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .episode-card-meta {
+            color: #666;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .episode-card-description {
+            color: #444;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .episode-card-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .episode-card-play {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .episode-card-play:hover {
+            background-color: var(--secondary-dark-blue);
+        }
+        
+        .episode-card-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .episode-card-actions button {
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .episode-card-actions button:hover {
+            color: var(--primary-light-blue);
+        }
+        
+        .load-more-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .load-more-btn {
+            background-color: var(--primary-white);
+            color: var(--secondary-dark-blue);
+            border: 2px solid var(--secondary-dark-blue);
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .load-more-btn:hover {
+            background-color: var(--secondary-dark-blue);
+            color: var(--primary-white);
+        }
+        
+        /* Petition Section */
+        .petition-section {
+            background-color: var(--secondary-light-gray);
+            padding: 3rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards 0.4s;
+        }
+        
+        .petition-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .petition-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .petition-header p {
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .petitions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .petition-card {
+            background-color: var(--primary-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .petition-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .petition-card-image {
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .petition-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .petition-card:hover .petition-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .petition-card-content {
+            padding: 1.5rem;
+        }
+        
+        .petition-card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .petition-card-description {
+            color: #444;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            height: 80px;
+            overflow: hidden;
+        }
+        
+        .petition-progress {
+            margin-bottom: 1rem;
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .petition-sign {
+            text-align: center;
+        }
+        
+        .sign-btn {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+        }
+        
+        .sign-btn:hover {
+            background-color: var(--secondary-dark-blue);
+        }
+        
+        .sign-btn:active {
+            transform: scale(0.98);
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--secondary-dark-blue);
+            color: var(--primary-white);
+            padding: 3rem 5%;
+        }
+        
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--primary-white);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-light-blue);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--primary-light-blue);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            min-width: 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #3a9ccf;
+        }
+        
+        .footer-contact div {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-contact i {
+            color: var(--primary-light-blue);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--primary-white);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--primary-light-blue);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        .footer-bottom p {
+            margin-bottom: 10px;
+        }
+        
+        .footer-bottom a {
+            color: #ddd;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-bottom a:hover {
+            color: var(--primary-light-blue);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1023px) {
+            .episode-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            header {
+                padding: 1rem;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: var(--primary-white);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 1rem;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .search-bar {
+                display: none;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+                margin: 2rem 0;
+            }
+            
+            .latest-episode-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .episode-content {
+                padding: 1rem;
+            }
+            
+            .archive-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .archive-controls {
+                width: 100%;
+                flex-direction: column;
+            }
+            
+            .archive-search input {
+                width: 100%;
+            }
+            
+            .petition-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="/api/placeholder/50/50" alt="EMB Logo">
+                <div class="logo-text">
+                    <span class="e-major">E-Major</span> <span class="biznet">Biznet</span>
+                </div>
+            </div>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gospel-music.html">Gospel Music</a></li>
+                    <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                    <li><a href="financial-literacy.html">Financial Literacy</a></li>
+                    <li><a href="business-ideas.html">Business Ideas</a></li>
+                    <li><a href="bible-teachings.html">Bible Teachings</a></li>
+                    <li><a href="podcast.html" class="active">Podcast</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- <div class="header-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div> -->
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <h1 class="page-title">Podcast</h1>
+        
+        <!-- Latest Episode Section -->
+        <section class="latest-episode">
+            <div class="latest-episode-header">
+                <h2>Latest Episode</h2>
+                <div class="latest-episode-badge">New Release</div>
+            </div>
+            
+            <div class="episode-content">
+                <div class="episode-media">
+                    <div class="episode-thumbnail">
+                        <img src="/api/placeholder/400/300" alt="Latest Episode Thumbnail">
+                    </div>
+                    
+                    <div class="audio-player">
+                        <audio controls>
+                            <source src="#" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                
+                <div class="episode-details">
+                    <h3 class="episode-title">Financial Stewardship in Modern Christianity: Balancing Faith and Financial Wisdom</h3>
+                    
+                    <div class="episode-meta">
+                        <span><i class="far fa-calendar-alt"></i> April 20, 2025</span>
+                        <span><i class="far fa-clock"></i> 45 minutes</span>
+                        <span><i class="fas fa-headphones"></i> Episode #42</span>
+                    </div>
+                    
+                    <div class="episode-description">
+                        <p>In this enlightening episode, we explore the biblical principles of financial stewardship and how they apply to modern Christians. We discuss practical strategies for managing personal finances while honoring faith-based values, and examine how proper financial management can support ministry and community work.</p>
+                        <p>Our special guest, financial advisor Sarah Johnson, shares her expertise on creating faith-based financial plans and how to align investment choices with Christian principles.</p>
+                    </div>
+                    
+                    <div class="episode-timestamps">
+                        <div class="timestamp-heading">Episode Timestamps</div>
+                        <ul class="timestamps-list">
+                            <li><span class="timestamp">00:00</span> Introduction and topic overview</li>
+                            <li><span class="timestamp">03:45</span> Biblical foundations of stewardship</li>
+                            <li><span class="timestamp">12:20</span> Interview with Sarah Johnson</li>
+                            <li><span class="timestamp">25:18</span> Practical budgeting tips for Christians</li>
+                            <li><span class="timestamp">33:40</span> Faith-based investing principles</li>
+                            <li><span class="timestamp">42:15</span> Conclusion and closing thoughts</li>
+							</ul>
+                    </div>
+                    
+                    <div class="guest-info">
+                        <div class="guest-avatar">
+                            <img src="/api/placeholder/80/80" alt="Sarah Johnson">
+                        </div>
+                        <div class="guest-bio">
+                            <h4>Sarah Johnson</h4>
+                            <p>Christian Financial Advisor & Author</p>
+                            <p>Founder of Faith-Forward Financial Planning</p>
+                            <div class="guest-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Episode Archive Section -->
+        <section class="episode-archive">
+            <div class="archive-header">
+                <h2>Episode Archive</h2>
+                <div class="archive-controls">
+                    <div class="archive-search">
+                        <input type="text" placeholder="Search episodes...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="archive-filter">
+                        <select>
+                            <option value="">Filter by topic</option>
+                            <option value="gospel">Gospel Music</option>
+                            <option value="finance">Financial Literacy</option>
+                            <option value="business">Business Ideas</option>
+                            <option value="bible">Bible Teaching</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="episode-list">
+                <div class="episode-card">
+                    <div class="episode-card-thumbnail">
+                        <img src="/api/placeholder/300/180" alt="Episode Thumbnail">
+                        <div class="episode-card-number">EP #41</div>
+                    </div>
+                    <div class="episode-card-content">
+                        <h3 class="episode-card-title">Starting a Gospel Music Career: Practical Steps and Spiritual Guidance</h3>
+                        <div class="episode-card-meta">
+                            <span><i class="far fa-calendar-alt"></i> April 13, 2025</span>
+                            <span><i class="far fa-clock"></i> 38 min</span>
+                        </div>
+                        <p class="episode-card-description">Explore the journey of building a gospel music career that honors both artistic excellence and spiritual purpose. Learn about production, distribution, and ministry balance.</p>
+                        <div class="episode-card-controls">
+                            <button class="episode-card-play"><i class="fas fa-play"></i> Listen Now</button>
+                            <div class="episode-card-actions">
+                                <button><i class="fas fa-download"></i></button>
+                                <button><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="episode-card">
+                    <div class="episode-card-thumbnail">
+                        <img src="/api/placeholder/300/180" alt="Episode Thumbnail">
+                        <div class="episode-card-number">EP #40</div>
+                    </div>
+                    <div class="episode-card-content">
+                        <h3 class="episode-card-title">Biblical Entrepreneurship: King Solomon's Business Wisdom for Today</h3>
+                        <div class="episode-card-meta">
+                            <span><i class="far fa-calendar-alt"></i> April 6, 2025</span>
+                            <span><i class="far fa-clock"></i> 42 min</span>
+                        </div>
+                        <p class="episode-card-description">Discover timeless business principles from King Solomon and how they apply to modern entrepreneurs. We analyze Proverbs for practical business insights.</p>
+                        <div class="episode-card-controls">
+                            <button class="episode-card-play"><i class="fas fa-play"></i> Listen Now</button>
+                            <div class="episode-card-actions">
+                                <button><i class="fas fa-download"></i></button>
+                                <button><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="episode-card">
+                    <div class="episode-card-thumbnail">
+                        <img src="/api/placeholder/300/180" alt="Episode Thumbnail">
+                        <div class="episode-card-number">EP #39</div>
+                    </div>
+                    <div class="episode-card-content">
+                        <h3 class="episode-card-title">Decoding Modern Gospel: Lyrical Analysis of Top Charts 2025</h3>
+                        <div class="episode-card-meta">
+                            <span><i class="far fa-calendar-alt"></i> March 30, 2025</span>
+                            <span><i class="far fa-clock"></i> 55 min</span>
+                        </div>
+                        <p class="episode-card-description">We break down the theological themes and biblical references in this year's most popular gospel songs, discussing their impact and spiritual significance.</p>
+                        <div class="episode-card-controls">
+                            <button class="episode-card-play"><i class="fas fa-play"></i> Listen Now</button>
+                            <div class="episode-card-actions">
+                                <button><i class="fas fa-download"></i></button>
+                                <button><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="episode-card">
+                    <div class="episode-card-thumbnail">
+                        <img src="/api/placeholder/300/180" alt="Episode Thumbnail">
+                        <div class="episode-card-number">EP #38</div>
+                    </div>
+                    <div class="episode-card-content">
+                        <h3 class="episode-card-title">Debt-Free Living: Biblical Strategies for Financial Freedom</h3>
+                        <div class="episode-card-meta">
+                            <span><i class="far fa-calendar-alt"></i> March 23, 2025</span>
+                            <span><i class="far fa-clock"></i> 47 min</span>
+                        </div>
+                        <p class="episode-card-description">Learn practical steps to achieve financial freedom using biblically-sound principles. We discuss debt elimination strategies, savings plans, and generous living.</p>
+                        <div class="episode-card-controls">
+                            <button class="episode-card-play"><i class="fas fa-play"></i> Listen Now</button>
+                            <div class="episode-card-actions">
+                                <button><i class="fas fa-download"></i></button>
+                                <button><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="episode-card">
+                    <div class="episode-card-thumbnail">
+                        <img src="/api/placeholder/300/180" alt="Episode Thumbnail">
+                        <div class="episode-card-number">EP #37</div>
+                    </div>
+                    <div class="episode-card-content">
+                        <h3 class="episode-card-title">Faith-Based Digital Marketing: Growing Your Ministry Online</h3>
+                        <div class="episode-card-meta">
+                            <span><i class="far fa-calendar-alt"></i> March 16, 2025</span>
+                            <span><i class="far fa-clock"></i> 40 min</span>
+                        </div>
+                        <p class="episode-card-description">Discover effective strategies for digital evangelism and ministry growth online while maintaining integrity and authenticity in your messaging.</p>
+                        <div class="episode-card-controls">
+                            <button class="episode-card-play"><i class="fas fa-play"></i> Listen Now</button>
+                            <div class="episode-card-actions">
+                                <button><i class="fas fa-download"></i></button>
+                                <button><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="episode-card">
+                    <div class="episode-card-thumbnail">
+                        <img src="/api/placeholder/300/180" alt="Episode Thumbnail">
+                        <div class="episode-card-number">EP #36</div>
+                    </div>
+                    <div class="episode-card-content">
+                        <h3 class="episode-card-title">Mental Health & Faith: Finding Balance in Modern Christian Life</h3>
+                        <div class="episode-card-meta">
+                            <span><i class="far fa-calendar-alt"></i> March 9, 2025</span>
+                            <span><i class="far fa-clock"></i> 51 min</span>
+                        </div>
+                        <p class="episode-card-description">A thoughtful discussion on integrating faith-based approaches with professional mental health care for holistic wellbeing in today's challenging world.</p>
+                        <div class="episode-card-controls">
+                            <button class="episode-card-play"><i class="fas fa-play"></i> Listen Now</button>
+                            <div class="episode-card-actions">
+                                <button><i class="fas fa-download"></i></button>
+                                <button><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="load-more-container">
+                <button class="load-more-btn">Load More Episodes</button>
+            </div>
+        </section>
+        
+        <!-- Petition Section -->
+        <section class="petition-section">
+            <div class="petition-header">
+                <h2>Active Petitions</h2>
+                <p>Join us in making a difference by supporting these important causes related to our podcast discussions. Your signature matters!</p>
+            </div>
+            
+            <div class="petitions-grid">
+                <div class="petition-card">
+                    <div class="petition-card-image">
+                        <img src="/api/placeholder/300/150" alt="Petition Image">
+                    </div>
+                    <div class="petition-card-content">
+                        <h3 class="petition-card-title">Support Gospel Music Education in Schools</h3>
+                        <p class="petition-card-description">Help us advocate for including gospel music history and appreciation in public school music curricula as part of cultural education.</p>
+                        <div class="petition-progress">
+                            <div class="progress-info">
+                                <span>8,742 signatures</span>
+                                <span>Goal: 10,000</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 87%; background-color: #4FB3E8;"></div>
+                            </div>
+                        </div>
+                        <div class="petition-sign">
+                            <button class="sign-btn">Sign Petition</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="petition-card">
+                    <div class="petition-card-image">
+                        <img src="/api/placeholder/300/150" alt="Petition Image">
+                    </div>
+                    <div class="petition-card-content">
+                        <h3 class="petition-card-title">Financial Literacy for Youth Ministry</h3>
+                        <p class="petition-card-description">Petition to include basic financial education in youth ministry programs to help young Christians develop good money habits early.</p>
+                        <div class="petition-progress">
+                            <div class="progress-info">
+                                <span>5,214 signatures</span>
+                                <span>Goal: 7,500</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 69%; background-color: #4FB3E8;"></div>
+                            </div>
+                        </div>
+                        <div class="petition-sign">
+                            <button class="sign-btn">Sign Petition</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="petition-card">
+                    <div class="petition-card-image">
+                        <img src="/api/placeholder/300/150" alt="Petition Image">
+                    </div>
+                    <div class="petition-card-content">
+                        <h3 class="petition-card-title">Faith-Based Small Business Support Initiative</h3>
+                        <p class="petition-card-description">Advocating for government programs specifically designed to support and fund small businesses with faith-based missions.</p>
+                        <div class="petition-progress">
+                            <div class="progress-info">
+                                <span>3,189 signatures</span>
+                                <span>Goal: 5,000</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 64%; background-color: #4FB3E8;"></div>
+                            </div>
+                        </div>
+                        <div class="petition-sign">
+                            <button class="sign-btn">Sign Petition</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <img src="/api/placeholder/60/60" alt="E-Major Biznet Logo">
+            <div class="logo-text">
+                <span class="e-major">E-Major</span> <span class="biznet">Biznet</span>
+            </div>
+        </div>
+        
+        <div class="footer-content">
+            <div class="footer-section footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gospel-music.html">Gospel Music</a></li>
+                    <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                    <li><a href="financial-literacy.html">Financial Literacy</a></li>
+                    <li><a href="business-ideas.html">Business Ideas</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section footer-links">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="bible-teachings.html">Bible Teachings</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="resources.html">Downloads</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest content updates and exclusive resources.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            
+            <div class="footer-section footer-contact">
+                <h3>Contact Us</h3>
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <span>contact@emajorbiznet.com</span>
+                </div>
+                <div>
+                    <i class="fas fa-phone"></i>
+                    <span>(555) 123-4567</span>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 E-Major Biznet. All rights reserved.</p>
+            <div>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Navigation Toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+        
+        // Progress Bar Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Trigger animation when elements come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe sections
+            document.querySelectorAll('.latest-episode, .episode-archive, .petition-section').forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Simulated audio player functionality
+            document.querySelectorAll('.episode-card-play').forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Audio player would start playing the episode here!');
+                });
+            });
+            
+            // Simulated petition signing
+            document.querySelectorAll('.sign-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Thank you for your interest! In a real implementation, a form would appear to collect your signature information.');
+                });
+            });
+            
+            // Load more episodes functionality
+            document.querySelector('.load-more-btn').addEventListener('click', function() {
+                alert('In a real implementation, this would load additional episodes from the archive.');
+            });
+        });
+    </script>
+</body>
+</html>

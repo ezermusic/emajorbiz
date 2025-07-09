@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | E-Major Biznet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-light-blue: #4FB3E8;
+            --primary-white: #FFFFFF;
+            --secondary-dark-blue: #084B83;
+            --secondary-light-gray: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--secondary-dark-blue);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flow-root;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+		
+		.logo a {
+			text-decoration:none;
+		}
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            margin-left: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-text span:first-child {
+            color: var(--primary-light-blue);
+        }
+
+        .logo-text span:last-child {
+            color: var(--secondary-dark-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--secondary-dark-blue);
+            font-weight: 600;
+            font-size: 1.03rem;
+            position: relative;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--primary-light-blue);
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-light-blue);
+            animation: blink 2s infinite, slide-in 0.5s ease-out;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes slide-in {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .search-social {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-form {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .search-form input {
+            padding: 8px 35px 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            outline: none;
+            font-size: 0.9rem;
+            width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .search-form input:focus {
+            border-color: var(--primary-light-blue);
+            box-shadow: 0 0 5px rgba(79, 179, 232, 0.5);
+        }
+
+        .search-form button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--secondary-dark-blue);
+            cursor: pointer;
+        }
+
+        .social-icons a {
+            color: var(--secondary-dark-blue);
+            margin-left: 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-light-blue);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary-dark-blue);
+        }
+
+        /* Main Content Styles */
+        main {
+            margin-top: 80px;
+            padding: 40px 0;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-light-blue);
+            margin: 15px auto 0;
+        }
+
+        .contact-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .contact-form-container {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--primary-white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-form-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-form-container h2 {
+            margin-bottom: 20px;
+            color: var(--secondary-dark-blue);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary-dark-blue);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-light-blue);
+            box-shadow: 0 0 5px rgba(79, 179, 232, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-dark-blue);
+            transform: translateY(-3px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            color: #d9534f;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact-method {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--secondary-light-gray);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .contact-method h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--secondary-dark-blue);
+        }
+
+        .contact-method h3 i {
+            margin-right: 10px;
+            color: var(--primary-light-blue);
+        }
+
+        .contact-method p {
+            margin-bottom: 10px;
+        }
+
+        .contact-method .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .contact-method .social-links a {
+            color: var(--secondary-dark-blue);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-method .social-links a:hover {
+            color: var(--primary-light-blue);
+        }
+
+        .response-time {
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 60px;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .faq-section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-light-blue);
+            margin: 15px auto 0;
+        }
+
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .faq-category-btn {
+            padding: 8px 20px;
+            background-color: var(--secondary-light-gray);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--secondary-dark-blue);
+        }
+
+        .faq-category-btn:hover, .faq-category-btn.active {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+        }
+
+        .faq-items {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            background-color: var(--secondary-light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #e9e9e9;
+        }
+
+        .faq-question h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .faq-question .icon {
+            color: var(--primary-light-blue);
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background-color: var(--primary-white);
+        }
+
+        .faq-answer-content {
+            padding: 20px;
+        }
+
+        .faq-item.active .faq-question {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+        }
+
+        .faq-item.active .faq-question .icon {
+            color: var(--primary-white);
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--secondary-dark-blue);
+            color: var(--primary-white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            color: var(--primary-light-blue);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--primary-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light-blue);
+        }
+
+        .newsletter-form {
+            margin-top: 20px;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .newsletter-form .btn {
+            width: 100%;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-bottom a {
+            color: var(--primary-light-blue);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1023px) {
+            .search-form input {
+                width: 150px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+
+            .hamburger {
+                display: block;
+                order: 3;
+            }
+
+            nav {
+                order: 4;
+                width: 100%;
+                display: none;
+                margin-top: 15px;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .search-social {
+                margin-left: auto;
+            }
+
+            .search-form {
+                display: none;
+            }
+
+            .contact-section {
+                flex-direction: column;
+            }
+        }
+
+        /* Animation Effects */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Form Validation Animation */
+        .form-shake {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+
+        /* Submit Button Animation */
+        .btn-submit {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .btn-submit:hover::after {
+            left: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-text">
+                        <span>E-Major</span> <span>Biznet</span>
+                    </div>
+                </a>
+            </div>
+            <button class="hamburger" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gospel-music.html">Gospel Music</a></li>
+                    <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                    <li><a href="financial-literacy.html">Financial Literacy</a></li>
+                    <li><a href="business-ideas.html">Business Ideas</a></li>
+                    <li><a href="bible-teachings.html">Bible Teachings</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- <div class="search-social">
+                <form class="search-form">
+                    <input type="text" placeholder="Search...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div> -->
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <h1 class="page-title fade-in">Get In Touch</h1>
+            
+            <section class="contact-section">
+                <div class="contact-form-container fade-in">
+                    <h2>Send Us A Message</h2>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                            <div class="error-message" id="name-error">Please enter your name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                            <div class="error-message" id="email-error">Please enter a valid email address</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="topic">Topic</label>
+                            <select id="topic" class="form-control" required>
+                                <option value="">Select a topic</option>
+                                <option value="gospel-music">Gospel Music</option>
+                                <option value="biblical-breakdowns">Biblical Breakdowns</option>
+                                <option value="financial-literacy">Financial Literacy</option>
+                                <option value="business-ideas">Business Ideas</option>
+                                <option value="bible-teachings">Bible Teachings</option>
+                                <option value="podcast">Podcast</option>
+                                <option value="resources">Resources</option>
+                                <option value="collaboration">Collaboration</option>
+                                <option value="support">Support</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="error-message" id="topic-error">Please select a topic</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" class="form-control" rows="5" required></textarea>
+                            <div class="error-message" id="message-error">Please enter your message</div>
+                        </div>
+                        <button type="submit" class="btn btn-submit">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h2 class="fade-in">Alternative Contact Methods</h2>
+                    
+                    <div class="contact-method fade-in">
+                        <h3><i class="fas fa-envelope"></i> Email</h3>
+                        <p>For general inquiries: <a href="mailto:info@emajorbiznet.com">info@emajorbiznet.com</a></p>
+                        <p>For business opportunities: <a href="mailto:business@emajorbiznet.com">business@emajorbiznet.com</a></p>
+                        <p class="response-time">We typically respond within 2-3 business days.</p>
+                    </div>
+                    
+                    <div class="contact-method fade-in">
+                        <h3><i class="fas fa-hashtag"></i> Social Media</h3>
+                        <p>Connect with us on social media for the quickest responses and updates.</p>
+                        <div class="social-links">
+                            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        </div>
+                        <p class="response-time">We typically respond to DMs within 24-48 hours.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="faq-section">
+                <h2 class="fade-in">Frequently Asked Questions</h2>
+                
+                <div class="faq-categories fade-in">
+                    <button class="faq-category-btn active" data-category="general">General</button>
+                    <button class="faq-category-btn" data-category="content">Content</button>
+                    <button class="faq-category-btn" data-category="resources">Resources</button>
+                    <button class="faq-category-btn" data-category="support">Support</button>
+                </div>
+                
+                <div class="faq-items">
+                    <div class="faq-item fade-in" data-category="general">
+                        <div class="faq-question">
+                            <h3>How often do you upload new content?</h3>
+                            <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>We strive to upload new content at least twice a week across our different channels. Gospel music videos are typically released on Sundays, while financial literacy and business ideas content is uploaded on Wednesdays. Biblical breakdowns and teachings are published as they are completed, typically 1-2 times per month.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in" data-category="content">
+                        <div class="faq-question">
+                            <h3>Can I suggest a song for your next biblical breakdown?</h3>
+                            <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Absolutely! We love hearing song suggestions from our community. You can submit your request through our contact form or on our social media channels. While we can't guarantee that every suggestion will be featured, we carefully consider all recommendations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in" data-category="resources">
+                        <div class="faq-question">
+                            <h3>Are all your resources free to download?</h3>
+                            <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>We offer a combination of free, donation-based, and premium resources. Many of our basic resources are completely free to download. For more comprehensive guides and tools, we offer them on a donation basis (pay what you can) or as premium resources with a fixed price. This helps us continue creating quality content while keeping most materials accessible to everyone.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in" data-category="support">
+                        <div class="faq-question">
+                            <h3>How can I support your ministry?</h3>
+                            <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>There are several ways you can support our ministry:</p>
+                                <ul>
+                                    <li>Subscribe to our YouTube channel and share our content</li>
+                                    <li>Purchase our premium resources</li>
+                                    <li>Make a donation through our website</li>
+                                    <li>Become a monthly partner</li>
+                                    <li>Pray for our ministry and team</li>
+                                </ul>
+                                <p>Every form of support, whether financial or non-financial, helps us continue our mission.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in" data-category="general">
+                        <div class="faq-question">
+                            <h3>Do you offer speaking engagements or workshops?</h3>
+                            <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Yes, we are available for speaking engagements, workshops, and events related to gospel music, biblical teachings, financial literacy, and business development. Please contact us through the form on this page with details about your event, and we'll get back to you to discuss availability and arrangements.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in" data-category="support">
+                        <div class="faq-question">
+                            <h3>I'm having trouble downloading a resource. What should I do?</h3>
+                            <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>If you're experiencing issues with downloading resources, please try:</p>
+                                <ol>
+                                    <li>Refreshing your browser</li>
+                                    <li>Clearing your browser cache</li>
+                                    <li>Using a different browser</li>
+                                </ol>
+                                <p>If the problem persists, please contact our support team at <a href="mailto:support@emajorbiznet.com">support@emajorbiznet.com</a> with details about the issue, including the resource you're trying to download and the device/browser you're using.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <div class="logo-text" style="color: white;">
+                    <span style="color: #4FB3E8;">E-Major</span> Biznet
+                </div>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gospel-music.html">Gospel Music</a></li>
+                        <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                        <li><a href="financial-literacy.html">Financial Literacy</a></li>
+                        <li><a href="business-ideas.html">Business Ideas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="resources.html">Free Resources</a></li>
+                        <li><a href="resources.html#premium">Premium Resources</a></li>
+                        <li><a href="podcast.html">Podcast</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="about.html#mission">Mission & Vision</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="support.html">Support Our Ministry</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest content and resources.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 E-Major Biznet. All rights reserved.</p>
+                <div>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('active');
+        });
+        
+        // Form Validation
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            
+            // Name validation
+            const nameInput = document.getElementById('name');
+            const nameError = document.getElementById('name-error');
+            
+            if (!nameInput.value.trim()) {
+                nameError.style.display = 'block';
+                nameInput.parentElement.classList.add('form-shake');
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+                nameInput.parentElement.classList.remove('form-shake');
+            }
+            
+            // Email validation
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailPattern.test(emailInput.value)) {
+                emailError.style.display = 'block';
+                emailInput.parentElement.classList.add('form-shake');
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+                emailInput.parentElement.classList.remove('form-shake');
+            }
+            
+            // Topic validation
+            const topicInput = document.getElementById('topic');
+            const topicError = document.getElementById('topic-error');
+            
+            if (!topicInput.value) {
+                topicError.style.display = 'block';
+                topicInput.parentElement.classList.add('form-shake');
+                isValid = false;
+            } else {
+                topicError.style.display = 'none';
+                topicInput.parentElement.classList.remove('form-shake');
+            }
+            
+            // Message validation
+            const messageInput = document.getElementById('message');
+            const messageError = document.getElementById('message-error');
+            
+            if (!messageInput.value.trim()) {
+                messageError.style.display = 'block';
+                messageInput.parentElement.classList.add('form-shake');
+                isValid = false;
+            } else {
+                messageError.style.display = 'none';
+                messageInput.parentElement.classList.remove('form-shake');
+            }
+            
+            // If form is valid, submit (here you would typically send data to server)
+            if (isValid) {
+                // Replace with actual form submission code
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+            }
+        });
+        
+        // Remove shake animation after it completes
+        const formGroups = document.querySelectorAll('.form-group');
+        formGroups.forEach(group => {
+            group.addEventListener('animationend', function() {
+                this.classList.remove('form-shake');
+            });
+        });
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // FAQ Category Filtering
+        const categoryButtons = document.querySelectorAll('.faq-category-btn');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                categoryButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+                
+                // Show/hide FAQ items based on category
+                const category = button.getAttribute('data-category');
+                
+                faqItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Scroll Animation
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 50) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        // Run on page load
+        handleScrollAnimations();
+        
+        // Run on scroll
+        window.addEventListener('scroll', handleScrollAnimations);
+    </script>
+</body>
+</html>

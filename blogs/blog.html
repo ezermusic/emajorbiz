@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Power of Faith in Uncertain Times | E-Major Biznet Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-light-blue: #4FB3E8;
+            --primary-white: #FFFFFF;
+            --secondary-dark-blue: #084B83;
+            --secondary-light-gray: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--primary-white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--secondary-dark-blue);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-dark-blue);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-light-blue);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo span:first-child {
+            color: var(--primary-light-blue);
+            font-weight: 700;
+            font-size: 24px;
+			margin-right: 4px;
+        }
+
+        .logo span:last-child {
+            color: var(--secondary-dark-blue);
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a.active {
+            color: var(--primary-light-blue);
+            font-weight: 600;
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-light-blue);
+            animation: blink 1.5s infinite, underline 0.3s forwards;
+        }
+
+        @keyframes underline {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .search-social {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            padding: 8px 35px 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--primary-light-blue);
+            box-shadow: 0 0 5px rgba(79, 179, 232, 0.5);
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .social-icons a {
+            margin-left: 15px;
+            color: var(--secondary-dark-blue);
+            font-size: 18px;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-light-blue);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* Hero Section */
+        .blog-hero {
+            background-color: var(--secondary-dark-blue);
+            color: var(--primary-white);
+            padding: 60px 0;
+            text-align: center;
+            background-image: linear-gradient(rgba(8, 75, 131, 0.85), rgba(8, 75, 131, 0.85)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-white);
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .post-meta > div {
+            margin: 0 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .post-meta i {
+            margin-right: 5px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid var(--primary-light-blue);
+        }
+
+        /* Blog Content Section */
+        .blog-content {
+            padding: 60px 0;
+            background-color: var(--primary-white);
+        }
+
+        .blog-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+
+        .blog-main {
+            background: var(--primary-white);
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+        }
+
+        .featured-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-text p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .blog-text h2 {
+            margin: 40px 0 20px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .blog-text h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-light-blue);
+        }
+
+        .blog-text h3 {
+            margin: 30px 0 15px;
+            font-size: 1.4rem;
+        }
+
+        .blog-text ul, .blog-text ol {
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+
+        .blog-text li {
+            margin-bottom: 10px;
+        }
+
+        .blog-text blockquote {
+            border-left: 4px solid var(--primary-light-blue);
+            padding: 15px 20px;
+            margin: 30px 0;
+            background-color: var(--secondary-light-gray);
+            position: relative;
+        }
+
+        .blog-text blockquote::before {
+            content: """;
+            font-family: Georgia, serif;
+            font-size: 4rem;
+            position: absolute;
+            left: 10px;
+            top: -10px;
+            color: var(--primary-light-blue);
+            opacity: 0.3;
+        }
+
+        .blog-text blockquote p {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--secondary-dark-blue);
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-text blockquote.scripture {
+            background-color: rgba(79, 179, 232, 0.1);
+            border-left: 4px solid var(--primary-light-blue);
+        }
+
+        .blog-text blockquote.scripture::before {
+            content: "";
+        }
+
+        .blog-text blockquote.scripture::after {
+            content: """;
+            font-family: Georgia, serif;
+            font-size: 4rem;
+            position: absolute;
+            right: 10px;
+            bottom: -30px;
+            color: var(--primary-light-blue);
+            opacity: 0.3;
+        }
+
+        .verse-reference {
+            display: block;
+            text-align: right;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--secondary-dark-blue);
+            margin-top: 10px;
+        }
+
+        .blog-text blockquote.insight {
+            background-color: rgba(8, 75, 131, 0.1);
+            border-left: 4px solid var(--secondary-dark-blue);
+        }
+
+        .blog-text blockquote.insight p {
+            font-weight: 500;
+        }
+
+        .blog-text img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .blog-text .highlight-box {
+            background-color: var(--secondary-light-gray);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-top: 3px solid var(--primary-light-blue);
+        }
+
+        .blog-text .highlight-box h4 {
+            margin-bottom: 10px;
+            color: var(--secondary-dark-blue);
+        }
+
+        /* Tags */
+        .blog-tags {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .blog-tags span {
+            margin-right: 10px;
+            font-weight: 600;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 15px;
+            margin: 5px;
+            background-color: var(--secondary-light-gray);
+            color: var(--secondary-dark-blue);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+        }
+
+        /* Author Box */
+        .author-box {
+            margin-top: 50px;
+            background-color: var(--secondary-light-gray);
+            border-radius: 8px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            border: 3px solid var(--primary-light-blue);
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .author-info p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .author-social a {
+            margin-right: 15px;
+            color: var(--secondary-dark-blue);
+            font-size: 18px;
+        }
+
+        .author-social a:hover {
+            color: var(--primary-light-blue);
+        }
+
+        /* Share Section */
+        .share-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+
+        .share-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .share-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 10px;
+            color: var(--primary-white);
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .facebook {
+            background-color: #3b5998;
+        }
+
+        .twitter {
+            background-color: #1da1f2;
+        }
+
+        .linkedin {
+            background-color: #0077b5;
+        }
+
+        .pinterest {
+            background-color: #bd081c;
+        }
+
+        .whatsapp {
+            background-color: #25d366;
+        }
+
+        .share-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Comments Section */
+        .comments-section {
+            margin-top: 60px;
+        }
+
+        .comments-section h3 {
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .comments-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-light-blue);
+        }
+
+        .comment {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .comment-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .comment-date {
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        .comment-content p {
+            margin-bottom: 10px;
+        }
+
+        .comment-reply {
+            display: inline-block;
+            font-size: 0.9rem;
+            color: var(--primary-light-blue);
+            font-weight: 600;
+        }
+
+        .comment-reply:hover {
+            text-decoration: underline;
+        }
+
+        .comment-form {
+            margin-top: 40px;
+        }
+
+        .comment-form h4 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-light-blue);
+            box-shadow: 0 0 5px rgba(79, 179, 232, 0.3);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 12px 25px;
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-dark-blue);
+        }
+
+        /* Sidebar */
+        .blog-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-widget {
+            background-color: var(--primary-white);
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-widget h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .sidebar-widget h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-light-blue);
+        }
+
+        .about-author {
+            text-align: center;
+        }
+
+        .author-sidebar-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 3px solid var(--primary-light-blue);
+            overflow: hidden;
+        }
+
+        .author-sidebar-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-author h4 {
+            margin-bottom: 10px;
+        }
+
+        .about-author p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .author-sidebar-social a {
+            display: inline-block;
+            margin: 0 5px;
+            color: var(--secondary-dark-blue);
+            font-size: 18px;
+        }
+
+        .author-sidebar-social a:hover {
+            color: var(--primary-light-blue);
+        }
+
+        .popular-posts-list {
+            list-style: none;
+        }
+
+        .popular-post {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .popular-post:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .popular-post-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 5px;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .popular-post-info h4 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .popular-post-info span {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .categories-list {
+            list-style: none;
+        }
+
+        .categories-list li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .categories-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .categories-list li a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .categories-list li a span {
+            display: inline-block;
+            padding: 3px 8px;
+            background-color: var(--secondary-light-gray);
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .tag-cloud a {
+            display: inline-block;
+            padding: 5px 12px;
+            margin: 0 5px 8px 0;
+            background-color: var(--secondary-light-gray);
+            color: var(--secondary-dark-blue);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .tag-cloud a:hover {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+        }
+
+        .newsletter-form {
+            margin-top: 15px;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-family: 'Open Sans', sans-serif;
+            outline: none;
+        }
+
+        .newsletter-form input:focus {
+            border-color: var(--primary-light-blue);
+            box-shadow: 0 0 5px rgba(79, 179, 232, 0.3);
+        }
+
+        .newsletter-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--secondary-dark-blue);
+        }
+
+        /* Related Posts Section */
+        .related-posts {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+
+        .related-posts h3 {
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .related-posts h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-light-blue);
+        }
+
+        .related-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .related-post-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .related-post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .related-post-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .related-post-content {
+            padding: 15px;
+        }
+
+        .related-post-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .related-post-meta {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .related-post-meta i {
+            margin-right: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-dark-blue);
+            color: var(--primary-white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-light-blue);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-light-blue);
+            padding-left: 5px;
+        }
+
+        .newsletter form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+
+        .newsletter button {
+            padding: 10px 15px;
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter button:hover {
+            background-color: #3a9bce;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .footer-bottom a {
+            color: var(--primary-light-blue);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1023px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-sidebar {
+                margin-top: 40px;
+                position: static;
+            }
+            
+            .related-posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-white);
+                flex-direction: column;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 15px;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .search-bar {
+                display: none;
+            }
+
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+
+            .post-meta {
+                flex-wrap: wrap;
+            }
+
+            .post-meta > div {
+                margin: 5px 10px;
+            }
+
+            .blog-main {
+                padding: 25px;
+            }
+
+            .author-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .author-image {
+                margin: 0 auto 20px;
+            }
+
+            .related-posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide-in-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide-in-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <span>E-Major</span> <span>Biznet</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../gospel-music.html">Gospel Music</a></li>
+					<li><a href="../business-ideas.html">Business ideas</a></li>
+					<li><a href="../blog.html" class="active">Blog</a></li>
+					<li><a href="../events.html">Events</a></li>
+					<li><a href="../about.html">About</a></li>
+					<li><a href="../contact.html">Contact</a></li>
+				</ul>
+			</nav>
+<!-- <div class="search-social">
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+</div> -->
+<div class="hamburger">
+    <i class="fas fa-bars"></i>
+</div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="blog-hero">
+    <div class="container">
+        <h1>The Power of Faith in Uncertain Times</h1>
+        <div class="post-meta">
+            <div class="author">
+                <img src="emj.jpg" alt="Author" class="author-avatar">
+                <span>Ezer Asamani</span>
+            </div>
+            <div class="date">
+                <i class="far fa-calendar-alt"></i>
+                <span>May 5, 2025</span>
+            </div>
+            <div class="category">
+                <i class="far fa-folder"></i>
+                <span>Faith & Inspiration</span>
+            </div>
+            <div class="comments">
+                <i class="far fa-comment"></i>
+                <span>24 Comments</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Content Section -->
+<section class="blog-content">
+    <div class="container blog-container">
+        <div class="blog-main">
+            <img src="/api/placeholder/800/400" alt="Faith in Uncertain Times" class="featured-image">
+            
+            <div class="blog-text">
+                <p>In a world filled with uncertainty, the power of faith stands as an unwavering beacon of hope and strength. As we navigate through life's challenges, our faith becomes the anchor that holds us steady amidst the storms. This profound truth has resonated with believers throughout history and continues to be a source of comfort and guidance for millions around the globe today.</p>
+                
+                <p>The scripture reminds us in Hebrews 11:1 that "Faith is the substance of things hoped for, the evidence of things not seen." This beautiful definition encapsulates the essence of what it means to walk by faith—to believe in promises yet unfulfilled and to trust in God's plan even when the path ahead seems unclear.</p>
+                
+                <h2>Understanding Faith in Modern Context</h2>
+                <p>Faith is not merely a religious concept but a practical force that shapes our perspective and responses to life's circumstances. In today's fast-paced, often chaotic world, maintaining faith requires intentional effort and a deep connection to our spiritual roots.</p>
+                
+                <p>Many believe that faith is only relevant in times of crisis, but true faith permeates every aspect of our lives. It influences our decision-making, relationships, career choices, and even our approach to business and entrepreneurship. When we view our professional endeavors through the lens of faith, we begin to see our work as a calling rather than just a means to earn a living.</p>
+                
+                <blockquote class="scripture">
+                    <p>Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.</p>
+                    <span class="verse-reference">Proverbs 3:5-6</span>
+                </blockquote>
+                
+                <p>This scripture offers profound guidance for entrepreneurs and business leaders who often face difficult decisions with limited information. When we acknowledge God's sovereignty and seek His wisdom, He promises to direct our paths.</p>
+                
+                <h2>Five Ways Faith Empowers Us in Uncertainty</h2>
+                
+                <h3>1. Faith Provides Perspective</h3>
+                <p>When faced with challenges, faith helps us view our circumstances from an eternal perspective. What seems overwhelming in the moment becomes manageable when we remember that our present troubles are temporary, but God's promises are eternal.</p>
+                
+                <h3>2. Faith Fuels Perseverance</h3>
+                <p>The journey of entrepreneurship is filled with obstacles and setbacks. Faith gives us the strength to persevere when others might give up. It reminds us that our labor is not in vain and that God rewards those who diligently seek Him.</p>
+                
+                <blockquote class="insight">
+                    <p>Faith doesn't eliminate obstacles; it gives us the courage and determination to overcome them.</p>
+                </blockquote>
+                
+                <h3>3. Faith Fosters Community</h3>
+                <p>Shared faith creates powerful bonds within communities. When believers come together to support one another, they create networks of encouragement, accountability, and practical assistance that can help navigate uncertain times. This is particularly valuable for Christian entrepreneurs who benefit from connecting with like-minded business leaders.</p>
+                
+                <h3>4. Faith Encourages Ethical Business Practices</h3>
+                <p>A strong foundation of faith naturally leads to ethical decision-making in business. When profit is not our only motivation, we make choices that honor God, serve others, and contribute positively to society. This integrity becomes even more crucial during challenging economic periods when the temptation to compromise standards may increase.</p>
+                
+                <h3>5. Faith Opens Us to Divine Guidance</h3>
+                <p>Perhaps the most powerful aspect of faith in uncertain times is how it positions us to receive divine guidance. Through prayer, meditation on scripture, and attentiveness to the Holy Spirit, we gain access to wisdom beyond human understanding.</p>
+                
+                <div class="highlight-box">
+                    <h4>Faith in Action: A Personal Testimony</h4>
+                    <p>When I launched my first gospel music production company, the industry was undergoing massive digital disruption. Many advised me to wait for more stable conditions, but I felt a clear calling to proceed. Through prayer and faith, I received unexpected opportunities and met strategic partners at exactly the right moments. Looking back, I can see how God's hand guided each step, even when the path seemed uncertain. This experience taught me that faith is not the absence of fear but the courage to move forward despite it.</p>
+                    <p>- Pastor David Johnson</p>
+                </div>
+                
+                <h2>Practical Steps to Strengthen Your Faith</h2>
+                
+                <p>Building and maintaining strong faith requires intentional practice, especially during uncertain times. Here are some practical approaches that can help:</p>
+                
+                <ul>
+                    <li><strong>Daily Scripture Study:</strong> Set aside time each day to read and meditate on God's Word. The Bible is filled with promises and examples of God's faithfulness that can strengthen your own faith.</li>
+                    <li><strong>Prayer and Reflection:</strong> Develop a consistent prayer life that includes not just asking but listening. Keep a journal of prayers and answered prayers to remind yourself of God's faithfulness.</li>
+                    <li><strong>Community Connection:</strong> Surround yourself with fellow believers who can encourage your faith journey. Join a small group or business fellowship where you can share challenges and victories.</li>
+                    <li><strong>Service to Others:</strong> Faith grows when put into action. Look for opportunities to serve others, especially those in need. This practice shifts focus from personal concerns to Kingdom impact.</li>
+                    <li><strong>Gratitude Practice:</strong> Maintain a gratitude journal, noting God's blessings each day. This practice trains your mind to recognize divine provision even during difficult seasons.</li>
+                </ul>
+                
+                <p>Remember that faith develops through exercise. Just as physical muscles grow stronger through resistance training, your faith strengthens when tested by life's challenges.</p>
+                
+                <h2>Faith and Business: A Powerful Partnership</h2>
+                
+                <p>For Christian entrepreneurs and business leaders, integrating faith with business strategy creates a powerful synergy. Faith provides the foundation for distinctive leadership that values people, pursues excellence, and seeks to make a positive impact beyond profit margins.</p>
+                
+                <p>At E-Major Biznet, we believe that gospel music artists and Christian entrepreneurs have a unique opportunity to demonstrate faith-based business principles. When we approach our work as ministry, every transaction becomes an opportunity to reflect God's character and values.</p>
+                
+                <blockquote class="scripture">
+                    <p>Whatever you do, work at it with all your heart, as working for the Lord, not for human masters, since you know that you will receive an inheritance from the Lord as a reward. It is the Lord Christ you are serving.</p>
+                    <span class="verse-reference">Colossians 3:23-24</span>
+                </blockquote>
+                
+                <p>This scripture transforms our view of work from mere employment to sacred service. When we embrace this perspective, excellence becomes worship, integrity becomes non-negotiable, and obstacles become opportunities to demonstrate God's faithfulness.</p>
+                
+                <h2>Conclusion: Faith for the Journey Ahead</h2>
+                
+                <p>As we navigate the uncertainties of our rapidly changing world, faith remains our greatest asset. It provides the courage to take risks, the wisdom to make sound decisions, and the resilience to persevere through challenges.</p>
+                
+                <p>Whether you're launching a new gospel music album, starting a Christian business, or facing personal trials, remember that faith is not just a religious concept but a practical resource that connects you to divine wisdom and strength.</p>
+                
+                <p>I encourage you to step forward in faith today, knowing that the God who has been faithful in the past will continue to guide your path in the future. As you do, you'll discover that uncertainty, while uncomfortable, often becomes the very soil in which your faith grows deepest.</p>
+                
+                <blockquote class="insight">
+                    <p>Faith doesn't promise absence of storms; it guarantees the presence of God in the midst of them.</p>
+                </blockquote>
+                
+                <p>May your faith be strengthened as you trust God with your business, ministry, and life. And may your journey of faith inspire others to discover the peace and purpose that comes from walking with God through uncertain times.</p>
+            </div>
+            
+            <div class="blog-tags">
+                <span>Tags:</span>
+                <a href="#" class="tag">Faith</a>
+                <a href="#" class="tag">Christian Business</a>
+                <a href="#" class="tag">Entrepreneurship</a>
+                <a href="#" class="tag">Gospel Music Industry</a>
+                <a href="#" class="tag">Spiritual Growth</a>
+            </div>
+            
+            <div class="author-box">
+                <div class="author-image">
+                    <img src="emj.jpg" alt="Ezer Asamani">
+                </div>
+                <div class="author-info">
+                    <h4>Ezer Asamani</h4>
+                    <p>Ezer Asamani is a gospel music producer, entrepreneur, and spiritual leader with over 20 years of experience in the Christian music industry. He founded E-Major Biznet to help gospel artists and Christian entrepreneurs thrive in their calling.</p>
+                    <div class="author-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="share-section">
+                <h3>Share This Article</h3>
+                <div class="share-buttons">
+                    <a href="#" class="share-button facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="share-button twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-button linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="share-button pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="share-button whatsapp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="related-posts">
+                <h3>Related Articles</h3>
+                <div class="related-posts-grid">
+                    <div class="related-post-card">
+                        <img src="/api/placeholder/400/200" alt="Related Post" class="related-post-img">
+                        <div class="related-post-content">
+                            <h4>Balancing Ministry and Business: A Guide for Gospel Artists</h4>
+                            <div class="related-post-meta">
+                                <i class="far fa-calendar-alt"></i> April 28, 2025
+                            </div>
+                        </div>
+                    </div>
+                    <div class="related-post-card">
+                        <img src="/api/placeholder/400/200" alt="Related Post" class="related-post-img">
+                        <div class="related-post-content">
+                            <h4>5 Biblical Principles for Successful Christian Entrepreneurship</h4>
+                            <div class="related-post-meta">
+                                <i class="far fa-calendar-alt"></i> April 15, 2025
+                            </div>
+                        </div>
+                    </div>
+                    <div class="related-post-card">
+                        <img src="/api/placeholder/400/200" alt="Related Post" class="related-post-img">
+                        <div class="related-post-content">
+                            <h4>How to Build a Supportive Community for Gospel Music Artists</h4>
+                            <div class="related-post-meta">
+                                <i class="far fa-calendar-alt"></i> March 30, 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comments-section">
+                <h3>24 Comments</h3>
+                
+                <div class="comment">
+                    <div class="comment-header">
+                        <img src="/api/placeholder/100/100" alt="Comment Avatar" class="comment-avatar">
+                        <div>
+                            <div class="comment-author">Rebecca Williams</div>
+                            <div class="comment-date">May 6, 2025 at 9:45 AM</div>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <p>This article came at exactly the right time for me. I've been struggling with uncertainty in my gospel music ministry, wondering if I should continue or pivot to something else. The reminder that "faith doesn't eliminate obstacles; it gives us the courage to overcome them" really spoke to my situation. Thank you, Pastor David!</p>
+                    </div>
+                    <a href="#" class="comment-reply">Reply</a>
+                </div>
+                
+                <div class="comment">
+                    <div class="comment-header">
+                        <img src="/api/placeholder/100/100" alt="Comment Avatar" class="comment-avatar">
+                        <div>
+                            <div class="comment-author">Marcus Johnson</div>
+                            <div class="comment-date">May 6, 2025 at 10:32 AM</div>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <p>I particularly appreciated the section on integrating faith with business strategy. As a Christian business owner, I sometimes feel pressure to separate my faith from my work. This article reinforced that my business can and should be an extension of my ministry. I'm implementing the gratitude practice starting today!</p>
+                    </div>
+                    <a href="#" class="comment-reply">Reply</a>
+                </div>
+                
+                <div class="comment">
+                    <div class="comment-header">
+                        <img src="/api/placeholder/100/100" alt="Comment Avatar" class="comment-avatar">
+                        <div>
+                            <div class="comment-author">Sarah Thompson</div>
+                            <div class="comment-date">May 7, 2025 at 2:15 PM</div>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <p>Pastor David, would you consider writing a follow-up article specifically about how to discern God's guidance when making major business decisions? I'm at a crossroads with my music production company and could use some biblical wisdom on decision-making.</p>
+                    </div>
+                    <a href="#" class="comment-reply">Reply</a>
+                </div>
+                
+                <div class="comment-form">
+                    <h4>Leave a Comment</h4>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Comment</label>
+                            <textarea id="comment" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Post Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="blog-sidebar">
+            <div class="sidebar-widget about-author">
+                <h3>About the Author</h3>
+                <div class="author-sidebar-image">
+                    <img src="emj.jpg" alt="Ezer Asamani">
+                </div>
+                <h4>Ezer Asamani</h4>
+                <p>Gospel music producer, entrepreneur, and spiritual leader with a passion for helping Christian creatives succeed in business while maintaining their spiritual integrity.</p>
+                <div class="author-sidebar-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="sidebar-widget">
+                <h3>Popular Posts</h3>
+                <ul class="popular-posts-list">
+                    <li class="popular-post">
+                        <img src="/api/placeholder/140/140" alt="Popular Post" class="popular-post-img">
+                        <div class="popular-post-info">
+                            <h4><a href="#">10 Marketing Strategies for Gospel Artists in 2025</a></h4>
+                            <span>April 20, 2025</span>
+                        </div>
+                    </li>
+                    <li class="popular-post">
+                        <img src="/api/placeholder/140/140" alt="Popular Post" class="popular-post-img">
+                        <div class="popular-post-info">
+                            <h4><a href="#">How to Fund Your Gospel Music Project Without Going Into Debt</a></h4>
+                            <span>April 12, 2025</span>
+                        </div>
+                    </li>
+                    <li class="popular-post">
+                        <img src="/api/placeholder/140/140" alt="Popular Post" class="popular-post-img">
+                        <div class="popular-post-info">
+                            <h4><a href="#">Building Your Personal Brand as a Christian Artist</a></h4>
+                            <span>March 28, 2025</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-widget">
+                <h3>Categories</h3>
+                <ul class="categories-list">
+                    <li><a href="#">Faith & Inspiration <span>24</span></a></li>
+                    <li><a href="#">Gospel Music Business <span>37</span></a></li>
+                    <li><a href="#">Christian Entrepreneurship <span>19</span></a></li>
+                    <li><a href="#">Ministry Resources <span>15</span></a></li>
+                    <li><a href="#">Leadership <span>22</span></a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-widget">
+                <h3>Tags</h3>
+                <div class="tag-cloud">
+                    <a href="#">Faith</a>
+                    <a href="#">Gospel</a>
+                    <a href="#">Business</a>
+                    <a href="#">Music</a>
+                    <a href="#">Marketing</a>
+                    <a href="#">Ministry</a>
+                    <a href="#">Leadership</a>
+                    <a href="#">Worship</a>
+                    <a href="#">Success</a>
+                    <a href="#">Entrepreneurship</a>
+                </div>
+            </div>
+            
+            <div class="sidebar-widget">
+                <h3>Subscribe to Newsletter</h3>
+                <p>Get the latest updates, articles and resources delivered straight to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-logo">
+            <span style="color: var(--primary-light-blue); font-weight: 700; font-size: 30px;">E-Major</span>
+            <span style="color: var(--primary-white); font-weight: 700; font-size: 30px;">Biznet</span>
+            <p>Empowering Gospel Music Artists and Christian Entrepreneurs</p>
+        </div>
+        
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../gospel-music.html">Gospel Music</a></li>
+                    <li><a href="../business.html">Business ideas</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="../events.html">Events</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Artist Development</a></li>
+                    <li><a href="#">Business Planning</a></li>
+                    <li><a href="#">Marketing Strategies</a></li>
+                    <li><a href="#">Music Production</a></li>
+                    <li><a href="#">Ministry Growth</a></li>
+                    <li><a href="#">Financial Management</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    <li><a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section newsletter">
+                <h3>Subscribe to Our Newsletter</h3>
+                <p>Get weekly updates, tips, and inspiration delivered to your inbox.</p>
+                <form>
+                    <input type="email" placeholder="Your Email" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 E-Major Biznet. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--primary-light-blue);"></i> by <a href="#">EMB Digital Studios</a></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile Menu Toggle
+    document.querySelector('.hamburger').addEventListener('click', function() {
+        document.querySelector('nav ul').classList.toggle('active');
+    });
+    
+    // Scroll Animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+    });
+</script>
+</body>
+</html>

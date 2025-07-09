@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Teachings | E-Major Biznet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-light-blue: #4FB3E8;
+            --primary-white: #FFFFFF;
+            --secondary-dark-blue: #084B83;
+            --secondary-light-gray: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--primary-white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--secondary-dark-blue);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-dark-blue);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-light-blue);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flow-root;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo span:first-child {
+            color: var(--primary-light-blue);
+            font-weight: 700;
+            font-size: 24px;
+			margin-right: 4px;
+        }
+
+        .logo span:last-child {
+            color: var(--secondary-dark-blue);
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a.active {
+            color: var(--primary-light-blue);
+            font-weight: 600;
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-light-blue);
+            animation: blink 1.5s infinite, underline 0.3s forwards;
+        }
+
+        @keyframes underline {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .search-social {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            padding: 8px 35px 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--primary-light-blue);
+            box-shadow: 0 0 5px rgba(79, 179, 232, 0.5);
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .social-icons a {
+            margin-left: 15px;
+            color: var(--secondary-dark-blue);
+            font-size: 18px;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-light-blue);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--secondary-dark-blue);
+            color: var(--primary-white);
+            padding: 80px 0;
+            text-align: center;
+            background-image: linear-gradient(rgba(8, 75, 131, 0.9), rgba(8, 75, 131, 0.9)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-white);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Featured Teaching Section */
+        .featured-teaching {
+            padding: 60px 0;
+            background-color: var(--primary-white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-light-blue);
+            margin: 15px auto 0;
+        }
+
+        .featured-video {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+        }
+
+        .video-info {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .video-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .scripture-reference {
+            background-color: var(--secondary-light-gray);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .scripture-reference h4 {
+            margin-bottom: 10px;
+            color: var(--secondary-dark-blue);
+        }
+
+        .verse {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 5px;
+            padding: 3px 8px;
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: help;
+            position: relative;
+        }
+
+        .verse:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--secondary-dark-blue);
+            color: var(--primary-white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            z-index: 10;
+            margin-bottom: 5px;
+        }
+
+        /* Topics Grid Section */
+        .topics-grid {
+            padding: 60px 0;
+            background-color: var(--secondary-light-gray);
+        }
+
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            margin: 5px;
+            background-color: var(--primary-white);
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border-color: var(--primary-light-blue);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .topic-card {
+            background-color: var(--primary-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .topic-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .topic-content {
+            padding: 20px;
+        }
+
+        .topic-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .topic-content p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .scripture-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .scripture-tag {
+            font-size: 0.8rem;
+            background-color: var(--secondary-light-gray);
+            padding: 3px 8px;
+            margin: 0 5px 5px 0;
+            border-radius: 3px;
+            color: #666;
+        }
+
+        .topic-card .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--secondary-dark-blue);
+            color: var(--primary-white);
+            border-radius: 4px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .topic-card .btn:hover {
+            background-color: var(--primary-light-blue);
+        }
+
+        /* Series Collections Section */
+        .series-collections {
+            padding: 60px 0;
+        }
+
+        .series-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .series-card {
+            width: 100%;
+            max-width: 380px;
+            background-color: var(--primary-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .series-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .series-header {
+            background-color: var(--secondary-dark-blue);
+            padding: 15px 20px;
+            color: var(--primary-white);
+        }
+
+        .series-header h3 {
+            color: var(--primary-white);
+            margin-bottom: 5px;
+        }
+
+        .series-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .series-episodes {
+            padding: 15px 20px;
+        }
+
+        .episode {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .episode:last-child {
+            border-bottom: none;
+        }
+
+        .episode-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .episode-title h4 {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .episode-title .status {
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 20px;
+        }
+
+        .status.complete {
+            background-color: #e6f7e6;
+            color: #2e7d32;
+        }
+
+        .status.incomplete {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background-color: #eee;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: var(--primary-light-blue);
+            border-radius: 3px;
+        }
+
+        .series-footer {
+            padding: 15px 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .series-footer .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .series-footer .btn:hover {
+            background-color: var(--secondary-dark-blue);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-dark-blue);
+            color: var(--primary-white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-light-blue);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-light-blue);
+            padding-left: 5px;
+        }
+
+        .newsletter form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+
+        .newsletter button {
+            padding: 10px 15px;
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter button:hover {
+            background-color: #3a9bce;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .footer-bottom a {
+            color: var(--primary-light-blue);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1023px) {
+            .header-container {
+                padding: 15px;
+            }
+            
+            .series-list {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 767px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-white);
+                flex-direction: column;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 15px;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .search-bar {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide-in-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide-in-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <span>E-Major</span><span> Biznet</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gospel-music.html">Gospel Music</a></li>
+                    <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                    <li><a href="financial-literacy.html">Financial Literacy</a></li>
+                    <li><a href="business-ideas.html">Business Ideas</a></li>
+                    <li><a href="bible-teachings.html" class="active">Bible Teachings</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+            <!-- <div class="search-social">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div> -->
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Bible Teachings</h1>
+            <p>Dive Deeper into Scripture with in-depth Analysis, Practical Applications and Spiritual Insights that will Strengthen Your Faith and Biblical Understanding.</p>
+        </div>
+    </section>
+
+    <!-- Featured Teaching Section -->
+    <section class="featured-teaching">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Teaching</h2>
+            <div class="featured-video fade-in">
+                <div class="video-container">
+                    <iframe src="/api/placeholder/800/450" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3>Understanding the Kingdom Principles of Prosperity</h3>
+                    <p>This teaching explores the biblical foundation for prosperity and how to apply Kingdom principles in your daily life while maintaining spiritual integrity.</p>
+                    <div class="scripture-reference">
+                        <h4>Key Scriptures:</h4>
+                        <span class="verse" data-tooltip="For I know the plans I have for you...">Jeremiah 29:11</span>
+                        <span class="verse" data-tooltip="Give, and it will be given to you...">Luke 6:38</span>
+                        <span class="verse" data-tooltip="But seek first the kingdom of God...">Matthew 6:33</span>
+                        <span class="verse" data-tooltip="The blessing of the LORD brings wealth...">Proverbs 10:22</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Grid Section -->
+    <section class="topics-grid">
+        <div class="container">
+            <h2 class="section-title fade-in">Biblical Topics</h2>
+            
+            <div class="filter-controls fade-in">
+                <button class="filter-btn active" data-filter="all">All Topics</button>
+                <button class="filter-btn" data-filter="faith">Faith</button>
+                <button class="filter-btn" data-filter="prosperity">Prosperity</button>
+                <button class="filter-btn" data-filter="relationships">Relationships</button>
+                <button class="filter-btn" data-filter="prophecy">Prophecy</button>
+                <button class="filter-btn" data-filter="spiritual-growth">Spiritual Growth</button>
+            </div>
+            
+            <div class="grid-container">
+                <!-- Topic Card 1 -->
+                <div class="topic-card slide-in-left" data-category="faith">
+                    <img src="/api/placeholder/300/180" alt="Faith Foundation">
+                    <div class="topic-content">
+                        <h3>The Foundation of Faith</h3>
+                        <p>Understanding what faith truly is and how it works in the believer's life.</p>
+                        <div class="scripture-tags">
+                            <span class="scripture-tag">Hebrews 11:1</span>
+                            <span class="scripture-tag">Romans 10:17</span>
+                            <span class="scripture-tag">2 Corinthians 5:7</span>
+                        </div>
+                        <a href="#" class="btn">Watch Now</a>
+                    </div>
+                </div>
+                
+                <!-- Topic Card 2 -->
+                <div class="topic-card slide-in-left" data-category="prosperity">
+                    <img src="/api/placeholder/300/180" alt="Biblical Prosperity">
+                    <div class="topic-content">
+                        <h3>Biblical Prosperity Principles</h3>
+                        <p>How to prosper God's way and use wealth to further the Kingdom.</p>
+                        <div class="scripture-tags">
+                            <span class="scripture-tag">3 John 1:2</span>
+                            <span class="scripture-tag">Malachi 3:10</span>
+                            <span class="scripture-tag">Deuteronomy 8:18</span>
+                        </div>
+                        <a href="#" class="btn">Watch Now</a>
+                    </div>
+                </div>
+                
+                <!-- Topic Card 3 -->
+                <div class="topic-card slide-in-left" data-category="relationships">
+                    <img src="/api/placeholder/300/180" alt="Biblical Relationships">
+                    <div class="topic-content">
+                        <h3>Godly Relationships</h3>
+                        <p>Building relationships that honor God and bring fulfillment.</p>
+                        <div class="scripture-tags">
+                            <span class="scripture-tag">Ephesians 5:22-33</span>
+                            <span class="scripture-tag">Proverbs 18:24</span>
+                            <span class="scripture-tag">1 Corinthians 13:4-7</span>
+                        </div>
+                        <a href="#" class="btn">Watch Now</a>
+                    </div>
+                </div>
+                
+                <!-- Topic Card 4 -->
+                <div class="topic-card slide-in-right" data-category="prophecy">
+                    <img src="/api/placeholder/300/180" alt="End Times">
+                    <div class="topic-content">
+                        <h3>Understanding End Times</h3>
+                        <p>Biblical perspective on prophecy and the return of Christ.</p>
+                        <div class="scripture-tags">
+                            <span class="scripture-tag">Matthew 24</span>
+                            <span class="scripture-tag">Revelation 1:7</span>
+                            <span class="scripture-tag">1 Thessalonians 4:16-17</span>
+                        </div>
+                        <a href="#" class="btn">Watch Now</a>
+                    </div>
+                </div>
+                
+                <!-- Topic Card 5 -->
+                <div class="topic-card slide-in-right" data-category="spiritual-growth">
+                    <img src="/api/placeholder/300/180" alt="Spiritual Growth">
+                    <div class="topic-content">
+                        <h3>Growing in the Spirit</h3>
+                        <p>Practical steps to mature spiritually and bear the fruit of the Spirit.</p>
+                        <div class="scripture-tags">
+                            <span class="scripture-tag">Galatians 5:22-23</span>
+                            <span class="scripture-tag">2 Peter 3:18</span>
+                            <span class="scripture-tag">Romans 12:2</span>
+                        </div>
+                        <a href="#" class="btn">Watch Now</a>
+                    </div>
+                </div>
+                
+                <!-- Topic Card 6 -->
+                <div class="topic-card slide-in-right" data-category="faith">
+                    <img src="/api/placeholder/300/180" alt="Prayer Power">
+                    <div class="topic-content">
+                        <h3>The Power of Prayer</h3>
+                        <p>Unlocking effective prayer that moves mountains.</p>
+                        <div class="scripture-tags">
+                            <span class="scripture-tag">James 5:16</span>
+                            <span class="scripture-tag">Mark 11:24</span>
+                            <span class="scripture-tag">1 John 5:14-15</span>
+                        </div>
+                        <a href="#" class="btn">Watch Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Series Collections Section -->
+    <section class="series-collections">
+        <div class="container">
+            <h2 class="section-title fade-in">Teaching Series</h2>
+            
+            <div class="series-list">
+                <!-- Series 1 -->
+                <div class="series-card fade-in">
+                    <div class="series-header">
+                        <h3>Foundations of Faith</h3>
+                        <p>A 5-part series on building an unshakable faith</p>
+                    </div>
+                    <div class="series-episodes">
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 1: What is Faith?</h4>
+                                <span class="status complete">Completed</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 2: Growing Your Faith</h4>
+                                <span class="status complete">Completed</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 3: Faith in Action</h4>
+                                <span class="status incomplete">Not Started</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 4: Overcoming Faith</h4>
+                                <span class="status incomplete">Not Started</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 5: Legacy of Faith</h4>
+                                <span class="status incomplete">Not Started</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    <div class="series-footer">
+                        <a href="#" class="btn">Continue Series</a>
+                    </div>
+                </div>
+                
+                <!-- Series 2 -->
+                <div class="series-card fade-in">
+                    <div class="series-header">
+                        <h3>Kingdom Finances</h3>
+                        <p>A 4-part series on biblical financial principles</p>
+                    </div>
+                    <div class="series-episodes">
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 1: Biblical Stewardship</h4>
+                                <span class="status complete">Completed</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 2: The Blessing of Giving</h4>
+                                <span class="status complete">Completed</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 3: Debt Freedom</h4>
+                                <span class="status complete">Completed</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 4: Kingdom Wealth Transfer</h4>
+                                <span class="status incomplete">In Progress</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="series-footer">
+                        <a href="#" class="btn">Continue Series</a>
+                    </div>
+                </div>
+                
+                <!-- Series 3 -->
+                <div class="series-card fade-in">
+                    <div class="series-header">
+                        <h3>Spirit-Led Living</h3>
+                        <p>A 6-part series on walking in the Spirit</p>
+                    </div>
+                    <div class="series-episodes">
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 1: Holy Spirit Baptism</h4>
+                                <span class="status complete">Completed</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 2: Gifts of the Spirit</h4>
+                                <span class="status incomplete">Not Started</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 3: Fruit of the Spirit</h4>
+                                <span class="status incomplete">Not Started</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 4: Hearing God's Voice</h4>
+                                <span class="status incomplete">Not Started</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 5: Spiritual Warfare</h4>
+                                <span class="status incomplete">Not Started</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="episode">
+                            <div class="episode-title">
+                                <h4>Part 6: Walking in Authority</h4>
+                                <span class="status incomplete">Not Started</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="series-footer">
+                        <a href="#" class="btn">Start Series</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <span style="color: #4FB3E8; font-weight: 700; font-size: 28px; margin-right: 4px;">E-Major</span><span style="color: white; font-weight: 700; font-size: 28px;">Biznet</span>
+                <p>Empowering believers through biblical teachings and resources.</p>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gospel-music.html">Gospel Music</a></li>
+                        <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                        <li><a href="financial-literacy.html">Financial Literacy</a></li>
+                        <li><a href="business-ideas.html">Business Ideas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Learn More</h3>
+                    <ul>
+                        <li><a href="bible-teachings.html">Bible Teachings</a></li>
+                        <li><a href="podcast.html">Podcast</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section newsletter">
+                    <h3>Stay Updated</h3>
+                    <p>Subscribe to our newsletter for the latest teachings and resources.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 E-Major Biznet. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        // Filter functionality for topics grid
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const topicCards = document.querySelectorAll('.topic-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter cards
+                    const filter = this.getAttribute('data-filter');
+                    
+                    topicCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        // Scripture tooltip functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const verses = document.querySelectorAll('.verse');
+            
+            verses.forEach(verse => {
+                verse.addEventListener('mouseover', function() {
+                    this.setAttribute('title', this.getAttribute('data-tooltip'));
+                });
+            });
+        });
+    </script>
+</body>
+</html>

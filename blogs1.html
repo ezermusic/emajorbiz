@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Major Biznet - Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-light-blue: #4FB3E8;
+            --primary-white: #FFFFFF;
+            --secondary-dark-blue: #084B83;
+            --secondary-light-gray: #F5F5F5;
+            --text-dark: #333333;
+            --text-medium: #666666;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--primary-white);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--secondary-dark-blue);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--primary-light-blue);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-white);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo-text span:first-child {
+            color: var(--primary-light-blue);
+        }
+        
+        .logo-text span:last-child {
+            color: var(--secondary-dark-blue);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-light-blue);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after,
+        nav ul li.active a::after {
+            width: 100%;
+        }
+        
+        nav ul li.active a {
+            color: var(--primary-light-blue);
+            font-weight: 600;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        nav ul li.active a {
+            animation: blink 2s infinite;
+        }
+        
+        .search-social {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-bar {
+            margin-right: 15px;
+            position: relative;
+        }
+        
+        .search-bar input {
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            width: 180px;
+            transition: var(--transition);
+        }
+        
+        .search-bar input:focus {
+            width: 220px;
+            outline: none;
+            border-color: var(--primary-light-blue);
+        }
+        
+        .search-bar button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-medium);
+            cursor: pointer;
+        }
+        
+        .social-icons a {
+            margin-left: 10px;
+            color: var(--secondary-dark-blue);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-light-blue);
+            transform: translateY(-3px);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary-dark-blue);
+        }
+        
+        /* Main Blog Content */
+        .page-banner {
+            background-image: linear-gradient(rgba(8, 75, 131, 0.9), rgba(0, 0, 15, 0.9)), url('/api/placeholder/1200/300');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            color: var(--primary-white);
+            text-align: center;
+        }
+        
+        .page-banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+            animation-delay: 0.2s;
+        }
+        
+        .page-banner p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .blog-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 60px 0;
+        }
+        
+        .blog-main h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .blog-main h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-light-blue);
+        }
+        
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background-color: var(--primary-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s forwards;
+        }
+        
+        .blog-card:nth-child(1) { animation-delay: 0.2s; }
+        .blog-card:nth-child(2) { animation-delay: 0.3s; }
+        .blog-card:nth-child(3) { animation-delay: 0.4s; }
+        .blog-card:nth-child(4) { animation-delay: 0.5s; }
+        .blog-card:nth-child(5) { animation-delay: 0.6s; }
+        .blog-card:nth-child(6) { animation-delay: 0.7s; }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .blog-card:hover .blog-image img {
+            transform: scale(1.1);
+        }
+        
+        .blog-content {
+            padding: 20px;
+        }
+        
+        .blog-category {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            font-size: 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            margin-bottom: 10px;
+        }
+        
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+        
+        .blog-meta i {
+            margin-right: 5px;
+        }
+        
+        .blog-excerpt {
+            color: var(--text-medium);
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: var(--primary-light-blue);
+            font-weight: 600;
+            position: relative;
+            padding-right: 20px;
+        }
+        
+        .read-more i {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: var(--transition);
+        }
+        
+        .read-more:hover i {
+            right: -5px;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .pagination a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 5px;
+            background-color: var(--secondary-light-gray);
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .pagination a:hover,
+        .pagination a.active {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+        }
+        
+        /* Sidebar */
+        .blog-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar-widget {
+            background-color: var(--primary-white);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .sidebar-widget h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-light-gray);
+            position: relative;
+        }
+        
+        .sidebar-widget h3::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-light-blue);
+        }
+        
+        .search-widget input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .search-widget button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .search-widget button:hover {
+            background-color: var(--secondary-dark-blue);
+        }
+        
+        .category-list {
+            list-style: none;
+        }
+        
+        .category-list li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--secondary-light-gray);
+        }
+        
+        .category-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .category-list a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .category-list a:hover {
+            padding-left: 5px;
+            color: var(--primary-light-blue);
+        }
+        
+        .category-count {
+            background-color: var(--secondary-light-gray);
+            color: var(--text-medium);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        .category-list a:hover .category-count {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+        }
+        
+        .popular-posts .post-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--secondary-light-gray);
+        }
+        
+        .popular-posts .post-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .post-item-image {
+            width: 80px;
+            height: 60px;
+            margin-right: 15px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .post-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .post-item-content h4 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+        
+        .post-item-date {
+            font-size: 0.8rem;
+            color: var(--text-medium);
+        }
+        
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag-cloud a {
+            padding: 6px 12px;
+            background-color: var(--secondary-light-gray);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        
+        .tag-cloud a:hover {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            transform: translateY(-3px);
+        }
+        
+        .newsletter-widget p {
+            margin-bottom: 15px;
+            color: var(--text-medium);
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .newsletter-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form button:hover {
+            background-color: var(--secondary-dark-blue);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-dark-blue);
+            color: var(--primary-white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-light-blue);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-light-blue);
+            padding-left: 5px;
+        }
+        
+        .footer-newsletter p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+        
+        .footer-form {
+            display: flex;
+        }
+        
+        .footer-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .footer-form button {
+            padding: 0 15px;
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .footer-form button:hover {
+            background-color: #3a8fc0;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        .footer-bottom a {
+            color: var(--primary-light-blue);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1023px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-sidebar {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .header-container {
+                padding: 15px;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-white);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                flex-direction: column;
+                padding: 20px 0;
+                z-index: 100;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 10px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .search-bar {
+                display: none;
+            }
+            
+            .social-icons {
+                display: none;
+            }
+            
+            .page-banner {
+                padding: 60px 0;
+            }
+            
+            .page-banner h1 {
+                font-size: 2rem;
+            }
+            
+            .blog-posts {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-card {
+                max-width: 100%;
+            }
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 1s forwards;
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 1s forwards;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">
+                    <span>E-Major</span> <span>Biznet</span>
+                </div>
+            </div>
+            
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gospel-music.html">Gospel Music</a></li>
+                    <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                    <li><a href="financial-literacy.html">Financial Literacy</a></li>
+                    <li><a href="business-ideas.html">Business Ideas</a></li>
+                    <li><a href="bible-teachings.html">Bible Teachings</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li class="active"><a href="blog.html">Blog</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- <div class="search-social">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div> -->
+        </div>
+    </header>
+    
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>E-Major Biznet Blog</h1>
+            <p>Discover insights on Gospel music, Biblical teachings, business ideas, and financial literacy to transform your spiritual and financial journey.</p>
+        </div>
+    </section>
+    
+    <!-- Blog Content -->
+    <section class="blog-container container">
+        <div class="blog-main">
+            <h2>Latest Articles</h2>
+            
+            <div class="blog-posts">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="/api/placeholder/600/400" alt="Financial Stewardship">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Financial Literacy</span>
+                        <h3><a href="blog/financial-stewardship-biblical-perspective.html">Financial Stewardship: A Biblical Perspective on Wealth Management</a></h3>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> May 5, 2025</span>
+                            <span><i class="far fa-user"></i> E-Major</span>
+                        </div>
+                        <p class="blog-excerpt">Discover how biblical principles can transform your approach to managing finances and creating generational wealth while honoring God's purpose for prosperity.</p>
+                        <a href="blog/financial-stewardship-biblical-perspective.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="/api/placeholder/600/400" alt="Gospel Music Production">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Gospel Music</span>
+                        <h3><a href="blog/modern-gospel-music-production-guide.html">Modern Gospel Music Production: A Complete Guide for Christian Artists</a></h3>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 28, 2025</span>
+                            <span><i class="far fa-user"></i> E-Major</span>
+                        </div>
+                        <p class="blog-excerpt">Learn the essential techniques for producing powerful gospel music that connects with audiences while maintaining biblical integrity and spiritual impact.</p>
+                        <a href="blog/modern-gospel-music-production-guide.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="/api/placeholder/600/400" alt="Business Ideas">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Business Ideas</span>
+                        <h3><a href="blog/christian-entrepreneur-startup-guide.html">The Christian Entrepreneur's Startup Guide: 10 Faith-Based Business Models</a></h3>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 22, 2025</span>
+                            <span><i class="far fa-user"></i> E-Major</span>
+                        </div>
+                        <p class="blog-excerpt">Explore practical business ideas that allow Christian entrepreneurs to serve their communities while building sustainable income streams aligned with biblical values.</p>
+                        <a href="blog/christian-entrepreneur-startup-guide.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="/api/placeholder/600/400" alt="Biblical Analysis">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Biblical Breakdowns</span>
+                        <h3><a href="blog/proverbs-31-business-woman-analysis.html">The Proverbs 31 Business Woman: A Modern Analysis of Biblical Entrepreneurship</a></h3>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 15, 2025</span>
+                            <span><i class="far fa-user"></i> E-Major</span>
+                        </div>
+                        <p class="blog-excerpt">Unpack the timeless wisdom of Proverbs 31 and discover how this ancient text provides a blueprint for modern Christian women in business and leadership.</p>
+                        <a href="blog/proverbs-31-business-woman-analysis.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="/api/placeholder/600/400" alt="Podcast Growth">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Podcast</span>
+                        <h3><a href="blog/christian-podcast-growth-strategies.html">Growing Your Christian Podcast: Strategies for Reaching More Listeners</a></h3>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 8, 2025</span>
+                            <span><i class="far fa-user"></i> E-Major</span>
+                        </div>
+                        <p class="blog-excerpt">Discover proven strategies to grow your Christian podcast audience, monetize your content, and create impactful episodes that spread the gospel message effectively.</p>
+                        <a href="blog/christian-podcast-growth-strategies.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="/api/placeholder/600/400" alt="Bible Study Methods">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-category">Bible Teachings</span>
+                        <h3><a href="blog/effective-bible-study-methods.html">5 Effective Bible Study Methods for Deeper Spiritual Understanding</a></h3>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 1, 2025</span>
+                            <span><i class="far fa-user"></i> E-Major</span>
+                        </div>
+                        <p class="blog-excerpt">Learn practical approaches to studying Scripture that will transform your understanding, strengthen your faith, and apply biblical wisdom to daily life decisions.</p>
+                        <a href="blog/effective-bible-study-methods.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+        
+        <aside class="blog-sidebar">
+            <div class="sidebar-widget search-widget">
+                <h3>Search</h3>
+                <form>
+                    <input type="text" placeholder="Search articles...">
+                    <button type="submit"><i class="fas fa-search"></i> Search</button>
+                </form>
+            </div>
+            
+            <div class="sidebar-widget">
+                <h3>Categories</h3>
+                <ul class="category-list">
+                    <li><a href="#">Financial Literacy <span class="category-count">24</span></a></li>
+                    <li><a href="#">Gospel Music <span class="category-count">18</span></a></li>
+                    <li><a href="#">Biblical Breakdowns <span class="category-count">15</span></a></li>
+                    <li><a href="#">Business Ideas <span class="category-count">21</span></a></li>
+                    <li><a href="#">Bible Teachings <span class="category-count">30</span></a></li>
+                    <li><a href="#">Podcast <span class="category-count">12</span></a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-widget popular-posts">
+                <h3>Popular Posts</h3>
+                <div class="post-item">
+                    <div class="post-item-image">
+                        <img src="/api/placeholder/150/100" alt="Post thumbnail">
+                    </div>
+                    <div class="post-item-content">
+                        <h4><a href="#">Biblical Principles for Debt-Free Living</a></h4>
+                        <span class="post-item-date"><i class="far fa-calendar"></i> March 25, 2025</span>
+                    </div>
+                </div>
+                
+                <div class="post-item">
+                    <div class="post-item-image">
+                        <img src="/api/placeholder/150/100" alt="Post thumbnail">
+                    </div>
+                    <div class="post-item-content">
+                        <h4><a href="#">Understanding Gospel Music Chord Progressions</a></h4>
+                        <span class="post-item-date"><i class="far fa-calendar"></i> March 18, 2025</span>
+                    </div>
+                </div>
+                
+                <div class="post-item">
+                    <div class="post-item-image">
+                        <img src="/api/placeholder/150/100" alt="Post thumbnail">
+                    </div>
+                    <div class="post-item-content">
+                        <h4><a href="#">7 Online Business Models for Christian Creators</a></h4>
+                        <span class="post-item-date"><i class="far fa-calendar"></i> March 12, 2025</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-widget">
+                <h3>Popular Tags</h3>
+                <div class="tag-cloud">
+                    <a href="#">Financial Freedom</a>
+                    <a href="#">Gospel</a>
+                    <a href="#">Bible Study</a>
+                    <a href="#">Entrepreneurship</a>
+                    <a href="#">Faith</a>
+                    <a href="#">Worship</a>
+                    <a href="#">Business</a>
+                    <a href="#">Investing</a>
+                    <a href="#">Music Production</a>
+                    <a href="#">Stewardship</a>
+                    <a href="#">Podcast Tips</a>
+                    <a href="#">Scripture</a>
+                </div>
+            </div>
+            
+            <div class="sidebar-widget newsletter-widget">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive our latest articles, updates, and resources directly to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit"><i class="far fa-envelope"></i> Subscribe</button>
+                </form>
+            </div>
+        </aside>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <div class="logo-text" style="font-size: 2rem;">
+                    <span style="color: var(--primary-light-blue);">E-Major</span> <span style="color: white;">Biznet</span>
+                </div>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gospel-music.html">Gospel Music</a></li>
+                        <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                        <li><a href="financial-literacy.html">Financial Literacy</a></li>
+                        <li><a href="business-ideas.html">Business Ideas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>More Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="bible-teachings.html">Bible Teachings</a></li>
+                        <li><a href="podcast.html">Podcast</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column footer-newsletter">
+                    <h3>Stay Connected</h3>
+                    <p>Subscribe to our newsletter for the latest updates, resources, and inspiration.</p>
+                    <form class="footer-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit"><i class="far fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 E-Major Biznet. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+            hamburger.innerHTML = navMenu.classList.contains('show') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Scroll Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.blog-card, .sidebar-widget');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Major Biznet - Gospel Music, Biblical Breakdowns & Financial Literacy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-light-blue: #4FB3E8;
+            --primary-white: #FFFFFF;
+            --secondary-dark-blue: #084B83;
+            --secondary-light-gray: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--primary-white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-dark-blue);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-light-blue);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flow-root;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+			margin-left: -80px;
+        }
+
+        .logo-text {
+            margin-left: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .logo-text span:first-child {
+            color: var(--primary-light-blue);
+        }
+
+        .logo-text span:last-child {
+            color: var(--secondary-dark-blue);
+        }
+		
+		
+		 .logo-text .e-major {
+            color: var(--primary-blue);
+        }
+        
+        .logo-text .biznet {
+            color: var(--dark-blue);
+        }
+		
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin: 0 0.8rem;
+            position: relative;
+        }
+
+        .nav-menu a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+			font-size: 14px;
+            padding: 0.5rem 0;
+            position: relative;
+            display: block;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-light-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu .active a::after {
+            width: 100%;
+        }
+
+        .nav-menu .active a {
+            color: var(--primary-light-blue);
+            font-weight: 600;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            position: relative;
+            margin-right: 1rem;
+        }
+
+        .search-bar input {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            padding-right: 2.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary-light-blue);
+            box-shadow: 0 0 5px rgba(79, 179, 232, 0.5);
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #777;
+            cursor: pointer;
+        }
+
+        .social-icons {
+            display: flex;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--secondary-light-gray);
+            color: var(--secondary-dark-blue);
+            margin-left: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            transform: translateY(-3px);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary-dark-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1920x1080') center/cover no-repeat;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 75, 131, 0.7);
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--primary-white);
+            max-width: 1200px;
+            padding: 2rem;
+            z-index: 1;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .cta-btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-btn:hover::before {
+            width: 100%;
+        }
+
+        .cta-primary {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+        }
+
+        .cta-secondary {
+            background-color: transparent;
+            color: var(--primary-white);
+            border: 2px solid var(--primary-white);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stats-counter {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .counter-item {
+            text-align: center;
+        }
+
+        .counter-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .counter-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* Featured Content */
+        .featured-content {
+            padding: 5rem 0;
+            background-color: var(--primary-white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-dark-blue);
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .featured-card {
+            background-color: var(--primary-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .featured-thumbnail {
+            position: relative;
+            overflow: hidden;
+            height: 180px;
+        }
+
+        .featured-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-card:hover .featured-thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .featured-category {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .featured-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background-color: var(--primary-white);
+            color: var(--primary-light-blue);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .featured-card:hover .featured-play {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .featured-content-info {
+            padding: 1.5rem;
+        }
+
+        .featured-content-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 1rem;
+        }
+
+        .view-more {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .view-more-btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--secondary-dark-blue);
+            color: var(--primary-white);
+            border-radius: 30px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .view-more-btn:hover {
+            background-color: var(--primary-light-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Categories Overview */
+        .categories {
+            padding: 5rem 0;
+            background-color: var(--secondary-light-gray);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            position: relative;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .category-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: all 0.5s ease;
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(8, 75, 131, 0.3), rgba(8, 75, 131, 0.9));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-bg {
+            transform: scale(1.1);
+        }
+
+        .category-card:hover .category-overlay {
+            background: linear-gradient(to bottom, rgba(79, 179, 232, 0.3), rgba(79, 179, 232, 0.9));
+        }
+
+        .category-name {
+            color: var(--primary-white);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .category-description {
+            color: var(--primary-white);
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-description {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background: url('https://via.placeholder.com/1920x1080') center/cover fixed no-repeat;
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(8, 75, 131, 0.8);
+        }
+
+        .testimonials .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials .section-header h2,
+        .testimonials .section-header p {
+            color: var(--primary-white);
+        }
+
+        .testimonial-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--primary-white);
+            margin: 0 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 5rem 0;
+            background-color: var(--primary-white);
+        }
+
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            position: relative;
+            margin-top: 2rem;
+            display: flex;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--secondary-dark-blue);
+        }
+
+        .newsletter-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 150px;
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            color: var(--primary-light-blue);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-text {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Footer */
+		
+		
+		.footer-logo .e-major {
+            color: var(--primary-blue);
+        }
+        
+        .footer-logo .biznet {
+            color: var(--white);
+        }
+		
+		
+        footer {
+            background-color: var(--secondary-dark-blue);
+            color: var(--primary-white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-light-blue);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: var(--primary-white);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            opacity: 1;
+            color: var(--primary-light-blue);
+            padding-left: 5px;
+        }
+
+        .footer-newsletter {
+            max-width: 400px;
+        }
+
+        .footer-newsletter p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .footer-newsletter-form {
+            display: flex;
+        }
+
+        .footer-newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .footer-newsletter-form button {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-white);
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .footer-newsletter-form button:hover {
+            background-color: #3a9bd3;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .footer-bottom-links a {
+            color: var(--primary-white);
+            margin-left: 1rem;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary-light-blue);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1023px) {
+            .nav-menu {
+                margin-right: 1rem;
+            }
+            
+            .nav-menu li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .counter-value {
+                font-size: 2rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+        }
+
+        @media (max-width: 767px) {
+            .header-inner {
+                padding: 1rem;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-white);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            .nav-menu.show {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                margin: 0.5rem 1rem;
+            }
+            
+            .search-bar {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+                margin-left: auto;
+                margin-right: 1rem;
+            }
+            
+            .hero-content {
+                padding: 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .stats-counter {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+            
+            .counter-item {
+                width: 45%;
+            }
+            
+            .counter-value {
+                font-size: 1.8rem;
+            }
+            
+            .featured-grid, .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-benefits {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .footer-bottom-links {
+                margin-top: 1rem;
+            }
+        }
+
+        /* Animation Keyframes */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .animate-blink {
+            animation: blink 2s infinite;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 1s forwards;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 1s forwards;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <img src="EMB.png" alt="EMB Logo">
+                    <div class="logo-text">
+                    <span class="e-major">E-Major</span> <span class="biznet">Biznet</span>
+                </div>
+                <nav>
+                    <ul class="nav-menu">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="gospel-music.html">Gospel Music</a></li>
+                        <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                        <li><a href="financial-literacy.html">Financial Literacy</a></li>
+                        <li><a href="business-ideas.html">Business Ideas</a></li>
+                        <li><a href="bible-teachings.html">Bible Teachings</a></li>
+                        <li><a href="podcast.html">Podcast</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+						<li><a href="blog.html">Blog</a></li>
+                    </ul>
+                    <button class="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+                <!-- <div class="nav-right">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Empowering Through Gospel Music, Biblical Wisdom & Financial Knowledge</h1>
+                <p>Discover powerful insights for spiritual growth and practical financial education that transform lives.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="cta-btn cta-primary">Watch Latest Video</a>
+                    <a href="resources.html" class="cta-btn cta-secondary">Explore Resources</a>
+                </div>
+                <div class="stats-counter">
+                    <div class="counter-item">
+                        <span class="counter-value" data-count="150">150K+</span>
+                        <span class="counter-label">Subscribers</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-value" data-count="10">10M+</span>
+                        <span class="counter-label">Video Views</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-value" data-count="500">500+</span>
+                        <span class="counter-label">Videos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Content -->
+    <section class="featured-content">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Content</h2>
+                <p>Discover our latest and most impactful videos across various categories to enrich your spiritual walk and financial journey.</p>
+            </div>
+            <div class="featured-grid">
+                <!-- Card 1 -->
+                <div class="featured-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="featured-thumbnail">
+                        <img src="/api/placeholder/400/250" alt="Gospel Music Video">
+                        <span class="featured-category">Gospel Music</span>
+                        <div class="featured-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="featured-content-info">
+                        <h3>Worthy Is The Lamb - New Gospel Release</h3>
+                        <p>A powerful worship experience celebrating the glory of Christ with modern gospel influences.</p>
+                        <div class="featured-meta">
+                            <span><i class="fas fa-eye"></i> 24K views</span>
+                            <span><i class="fas fa-calendar"></i> 2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="featured-card fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="featured-thumbnail">
+                        <img src="/api/placeholder/400/250" alt="Biblical Breakdown Video">
+                        <span class="featured-category">Biblical Breakdown</span>
+                        <div class="featured-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="featured-content-info">
+                        <h3>Understanding Revelation Through Modern Songs</h3>
+                        <p>Breaking down how contemporary gospel music reflects the truths in the Book of Revelation.</p>
+                        <div class="featured-meta">
+                            <span><i class="fas fa-eye"></i> 18K views</span>
+                            <span><i class="fas fa-calendar"></i> 1 week ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="featured-card fade-in-up" style="animation-delay: 0.6s;">
+                    <div class="featured-thumbnail">
+                        <img src="/api/placeholder/400/250" alt="Financial Literacy Video">
+                        <span class="featured-category">Financial Literacy</span>
+                        <div class="featured-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="featured-content-info">
+                        <h3>Biblical Principles of Wealth Creation</h3>
+                        <p>How to apply timeless biblical wisdom to modern financial decisions and stewardship.</p>
+                        <div class="featured-meta">
+                            <span><i class="fas fa-eye"></i> 32K views</span>
+                            <span><i class="fas fa-calendar"></i> 3 days ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="featured-card fade-in-up" style="animation-delay: 0.8s;">
+                    <div class="featured-thumbnail">
+                        <img src="/api/placeholder/400/250" alt="Business Ideas Video">
+                        <span class="featured-category">Business Ideas</span>
+                        <div class="featured-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="featured-content-info">
+                        <h3>Starting a Christian Media Business</h3>
+                        <p>A step-by-step guide to launching your own faith-based content platform with minimal investment.</p>
+                        <div class="featured-meta">
+                            <span><i class="fas fa-eye"></i> 15K views</span>
+                            <span><i class="fas fa-calendar"></i> 5 days ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="featured-card fade-in-up" style="animation-delay: 1.0s;">
+                    <div class="featured-thumbnail">
+                        <img src="/api/placeholder/400/250" alt="Bible Teaching Video">
+                        <span class="featured-category">Bible Teaching</span>
+                        <div class="featured-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="featured-content-info">
+                        <h3>The Beatitudes Explained For Today</h3>
+                        <p>Practical application of the Beatitudes in our modern context and daily challenges.</p>
+                        <div class="featured-meta">
+                            <span><i class="fas fa-eye"></i> 21K views</span>
+                            <span><i class="fas fa-calendar"></i> 1 week ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="featured-card fade-in-up" style="animation-delay: 1.2s;">
+                    <div class="featured-thumbnail">
+                        <img src="/api/placeholder/400/250" alt="Podcast Episode">
+                        <span class="featured-category">Podcast</span>
+                        <div class="featured-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="featured-content-info">
+                        <h3>Faith & Finance: Interview with Pastor Johnson</h3>
+                        <p>An insightful conversation about balancing Spiritual Growth with Financial Wisdom.</p>
+                        <div class="featured-meta">
+                            <span><i class="fas fa-eye"></i> 9K views</span>
+                            <span><i class="fas fa-calendar"></i> 4 days ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more">
+                <a href="#" class="view-more-btn">View More Content</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Overview -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Explore Our Categories</h2>
+                <p>Dive into our diverse content categories designed to nurture your Spiritual Growth and Financial Wisdom.</p>
+            </div>
+            <div class="categories-grid">
+                <!-- Category 1 -->
+                <div class="category-card">
+                    <div class="category-bg" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="category-overlay">
+                        <h3 class="category-name">Gospel Music</h3>
+                        <p class="category-description">Uplifting songs and Worship experiences to strengthen your Faith.</p>
+                    </div>
+                </div>
+                
+                <!-- Category 2 -->
+                <div class="category-card">
+                    <div class="category-bg" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="category-overlay">
+                        <h3 class="category-name">Biblical Breakdowns</h3>
+                        <p class="category-description">Deep analysis of Gospel Songs and their Biblical Foundations.</p>
+                    </div>
+                </div>
+                
+                <!-- Category 3 -->
+                <div class="category-card">
+                    <div class="category-bg" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="category-overlay">
+                        <h3 class="category-name">Financial Literacy</h3>
+                        <p class="category-description">Practical Financial Education from a Faith-based perspective.</p>
+                    </div>
+                </div>
+                
+                <!-- Category 4 -->
+                <div class="category-card">
+                    <div class="category-bg" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="category-overlay">
+                        <h3 class="category-name">Business Ideas</h3>
+                        <p class="category-description">Entrepreneurial concepts for Christians seeking Financial Independence.</p>
+                    </div>
+                </div>
+                
+                <!-- Category 5 -->
+                <div class="category-card">
+                    <div class="category-bg" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="category-overlay">
+                        <h3 class="category-name">Bible Teachings</h3>
+                        <p class="category-description">In-depth Scriptural teaching for daily application.</p>
+                    </div>
+                </div>
+                
+                <!-- Category 6 -->
+                <div class="category-card">
+                    <div class="category-bg" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="category-overlay">
+                        <h3 class="category-name">Podcast</h3>
+                        <p class="category-description">Thoughtful conversations with Faith Leaders and Financial Experts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Testimonials</h2>
+                <p>Hear from our community about how E-Major Biznet has transformed their Spiritual and Financial lives.</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"The biblical breakdowns have completely transformed my understanding of Worship music. I now appreciate the theological depth behind the songs I sing every Sunday."</p>
+                    <h4 class="testimonial-author">Michael Thompson</h4>
+                    <p class="testimonial-role">Worship Leader</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-container">
+                <div class="section-header">
+                    <h2>Join Our Newsletter</h2>
+                    <p>Subscribe to receive weekly Spiritual insights, Financial tips, and updates on new content.</p>
+                </div>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div class="newsletter-benefits">
+                    <div class="benefit-item fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="benefit-icon">
+                            <i class="fas fa-bible"></i>
+                        </div>
+                        <p class="benefit-text">Weekly Scripture Insights</p>
+                    </div>
+                    <div class="benefit-item fade-in-up" style="animation-delay: 0.4s;">
+                        <div class="benefit-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <p class="benefit-text">Financial Tips & Advice</p>
+                    </div>
+                    <div class="benefit-item fade-in-up" style="animation-delay: 0.6s;">
+                        <div class="benefit-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <p class="benefit-text">New Content Alerts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="EMB.png" alt="E-Major Biznet Logo">
+                <div class="logo-text">
+                    <span class="e-major">E-Major</span> <span class="biznet">Biznet</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gospel-music.html">Gospel Music</a></li>
+                        <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                        <li><a href="financial-literacy.html">Financial Literacy</a></li>
+                        <li><a href="business-ideas.html">Business Ideas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="resources.html">Free Resources</a></li>
+                        <li><a href="resources.html#premium">Premium Content</a></li>
+                        <li><a href="podcast.html">Podcast Episodes</a></li>
+                        <li><a href="bible-teachings.html">Bible Studies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="about.html#mission">Mission & Vision</a></li>
+                        <li><a href="about.html#team">Our Team</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-newsletter">
+                    <h3>Stay Connected</h3>
+                    <p>Join our email list for spiritual and financial wisdom delivered to your inbox.</p>
+                    <form class="footer-newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2025 E-Major Biznet. All rights reserved.
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter-value');
+        
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const count = parseInt(counter.innerText.replace(/[^\d]/g, ''));
+                const increment = Math.trunc(target / 100);
+                
+                if (count < target) {
+                    counter.innerText = `${Math.min(count + increment, target)}K+`;
+                    setTimeout(updateCount, 10);
+                } else {
+                    counter.innerText = `${target}K+`;
+                }
+            };
+            
+            // Start counting when in viewport
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    updateCount();
+                    observer.unobserve(counter);
+                }
+            }, { threshold: 0.5 });
+            
+            observer.observe(counter);
+        });
+
+        // Add scroll animation to elements
+        const fadeElements = document.querySelectorAll('.fade-in-up');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            fadeObserver.observe(element);
+        });
+
+        // Current page highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentLocation = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentLocation.substring(currentLocation.lastIndexOf('/') + 1)) {
+                    link.parentElement.classList.add('active');
+                    link.classList.add('animate-blink');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

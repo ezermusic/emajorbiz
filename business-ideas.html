@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Ideas - E-Major Biznet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-light-blue: #4FB3E8;
+            --primary-white: #FFFFFF;
+            --secondary-dark-blue: #084B83;
+            --secondary-light-gray: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--primary-white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--secondary-dark-blue);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flow-root;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo span:first-child {
+            color: var(--primary-light-blue);
+            font-weight: 700;
+			margin-right: 4px;
+        }
+
+        .logo span:last-child {
+            color: var(--secondary-dark-blue);
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary-light-blue);
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-light-blue);
+            animation: blink 1.5s infinite, underline 0.3s forwards;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes underline {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .search-social {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            position: relative;
+            margin-right: 15px;
+        }
+
+        .search-bar input {
+            padding: 8px 15px 8px 35px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
+            width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .social-icons a {
+            color: var(--secondary-dark-blue);
+            margin-left: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-light-blue);
+            transform: translateY(-3px);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--secondary-dark-blue);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+
+        /* Featured Business Idea */
+        .featured-idea {
+            background-color: var(--secondary-light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .featured-idea:hover {
+            transform: translateY(-5px);
+        }
+
+        .featured-content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .featured-image {
+            flex: 1;
+            min-width: 300px;
+            background: url('/api/placeholder/600/400') center/cover no-repeat;
+            height: 400px;
+        }
+
+        .featured-details {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+        }
+
+        .featured-details h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .featured-details h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-light-blue);
+        }
+
+        .idea-metrics {
+            display: flex;
+            margin: 20px 0;
+        }
+
+        .metric {
+            margin-right: 30px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-light-blue);
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .business-model {
+            margin: 30px 0;
+        }
+
+        .business-model h3 {
+            margin-bottom: 15px;
+        }
+
+        .canvas-visualization {
+            height: 150px;
+            background-color: #f0f8ff;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-light-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Business Ideas Catalog */
+        .business-catalog {
+            margin-bottom: 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            background-color: #f0f0f0;
+            border: none;
+            padding: 8px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-light-blue);
+            color: white;
+        }
+
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .idea-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .idea-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            height: 180px;
+            background: url('/api/placeholder/300/180') center/cover no-repeat;
+            position: relative;
+        }
+
+        .card-level {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .idea-stats {
+            display: flex;
+            margin: 15px 0;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .stat i {
+            margin-right: 5px;
+            color: var(--primary-light-blue);
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .expand-btn {
+            color: var(--primary-light-blue);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+
+        .expand-btn i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .expand-btn:hover i {
+            transform: translateX(3px);
+        }
+
+        .card-details {
+            display: none;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            margin-top: 15px;
+        }
+
+        .card-details.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Resources Section */
+        .resources-section {
+            background-color: var(--secondary-light-gray);
+            padding: 60px 0;
+            border-radius: 10px;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            padding: 25px 20px;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .resource-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #f0f8ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .resource-icon i {
+            font-size: 30px;
+            color: var(--primary-light-blue);
+        }
+
+        .resource-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .resource-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn i {
+            margin-right: 8px;
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-light-blue);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-dark-blue);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-logo {
+            display: block;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-light-blue);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-light-blue);
+            padding-left: 5px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 14px;
+        }
+
+        .newsletter-form button {
+            background-color: var(--primary-light-blue);
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #3a9bcd;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .footer-bottom a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--primary-light-blue);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1023px) {
+            .featured-content {
+                flex-direction: column;
+            }
+            
+            .featured-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                display: block;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 12px 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .search-bar input {
+                width: 150px;
+            }
+            
+            .social-icons {
+                display: none;
+            }
+            
+            .featured-image {
+                height: 250px;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <span>E-Major </span> <span> Biznet</span>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gospel-music.html">Gospel Music</a></li>
+                    <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                    <li><a href="financial-literacy.html">Financial Literacy</a></li>
+                    <li><a href="business-ideas.html" class="active">Business Ideas</a></li>
+                    <li><a href="bible-teachings.html">Bible Teachings</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+            
+            <!-- <div class="search-social">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div> -->
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Featured Business Idea -->
+            <section class="featured-idea">
+                <div class="featured-content">
+                    <div class="featured-image"></div>
+                    <div class="featured-details">
+                        <h2>Christian Music Production Studio</h2>
+                        <p>Build a community-focused recording studio specializing in gospel and worship music production, offering affordable rates to Christian artists and churches.</p>
+                        
+                        <div class="idea-metrics">
+                            <div class="metric">
+                                <span class="metric-value">$$</span>
+                                <span class="metric-label">Investment</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">Medium</span>
+                                <span class="metric-label">Difficulty</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">High</span>
+                                <span class="metric-label">Potential</span>
+                            </div>
+                        </div>
+                        
+                        <div class="business-model">
+                            <h3>Business Model Visualization</h3>
+                            <div class="canvas-visualization">
+                                Business Model Canvas Visualization
+                            </div>
+                        </div>
+                        
+                        <a href="business/music-studio.html" class="cta-button">View Full Business Plan <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Business Ideas Catalog -->
+            <section class="business-catalog">
+                <div class="section-header">
+                    <h2>Business Ideas Catalog</h2>
+                    <p>Explore our collection of Christian-centered business ideas with detailed plans and resources to help you launch your purpose-driven venture.</p>
+                </div>
+                
+                <div class="filter-controls">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Low Investment</button>
+                    <button class="filter-btn">Medium Investment</button>
+                    <button class="filter-btn">High Investment</button>
+                    <button class="filter-btn">Online Business</button>
+                    <button class="filter-btn">Physical Business</button>
+                </div>
+                
+                <div class="ideas-grid">
+                    <!-- Business Idea Card 1 -->
+                    <div class="idea-card">
+                        <div class="card-image">
+                            <span class="card-level">Low Investment</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>Christian Podcast Network</h3>
+                            <div class="idea-stats">
+                                <div class="stat">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>Low Cost</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>High Growth</span>
+                                </div>
+                            </div>
+                            <p class="card-description">Create a network of Christian podcasts covering various topics from faith to finances, with monetization through sponsorships and premium content.</p>
+                            <button class="expand-btn">Learn More <i class="fas fa-chevron-right"></i></button>
+                            <div class="card-details">
+                                <p>Start-up costs include basic recording equipment, website hosting, and distribution platforms. Revenue streams include sponsored content, affiliate marketing, premium subscriber content, and merchandise.</p>
+                                <a href="business/podcast-network.html" class="cta-button">Full Business Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Business Idea Card 2 -->
+                    <div class="idea-card">
+                        <div class="card-image">
+                            <span class="card-level">Medium Investment</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>Gospel Music Academy</h3>
+                            <div class="idea-stats">
+                                <div class="stat">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>Medium Cost</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Steady Growth</span>
+                                </div>
+                            </div>
+                            <p class="card-description">Launch an online or hybrid music school focusing on worship, gospel, and Christian contemporary music styles for vocalists and instrumentalists.</p>
+                            <button class="expand-btn">Learn More <i class="fas fa-chevron-right"></i></button>
+                            <div class="card-details">
+                                <p>This business combines digital courses with in-person workshops and masterclasses. Recruit experienced gospel musicians as instructors and develop curriculum for various skill levels.</p>
+                                <a href="business/gospel-academy.html" class="cta-button">Full Business Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Business Idea Card 3 -->
+                    <div class="idea-card">
+                        <div class="card-image">
+                            <span class="card-level">High Investment</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>Faith-Based Co-Working Space</h3>
+                            <div class="idea-stats">
+                                <div class="stat">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>High Cost</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Long-term ROI</span>
+                                </div>
+                            </div>
+                            <p class="card-description">Create a co-working environment specifically designed for Christian entrepreneurs, ministries, and non-profits with integrated prayer spaces.</p>
+                            <button class="expand-btn">Learn More <i class="fas fa-chevron-right"></i></button>
+                            <div class="card-details">
+                                <p>This physical business requires real estate investment but offers stable recurring revenue through memberships. Additional services can include business mentoring, ministry networking events, and resource sharing.</p>
+                                <a href="business/faith-coworking.html" class="cta-button">Full Business Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Business Idea Card 4 -->
+                    <div class="idea-card">
+                        <div class="card-image">
+                            <span class="card-level">Low Investment</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>Biblical Financial Coaching</h3>
+                            <div class="idea-stats">
+                                <div class="stat">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>Low Cost</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Moderate Growth</span>
+                                </div>
+                            </div>
+                            <p class="card-description">Offer personalized financial coaching services based on biblical principles of stewardship, generosity, and debt freedom.</p>
+                            <button class="expand-btn">Learn More <i class="fas fa-chevron-right"></i></button>
+                            <div class="card-details">
+                                <p>Startup costs include certification training, website development, and marketing materials. Revenue comes from one-on-one coaching sessions, group workshops, digital courses, and church partnerships.</p>
+                                <a href="business/financial-coaching.html" class="cta-button">Full Business Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Business Idea Card 5 -->
+                    <div class="idea-card">
+                        <div class="card-image">
+                            <span class="card-level">Medium Investment</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>Christian Media Production Company</h3>
+                            <div class="idea-stats">
+                                <div class="stat">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>Medium Cost</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>High Growth</span>
+                                </div>
+                            </div>
+                            <p class="card-description">Establish a creative agency specializing in video production, social media management, and content creation for churches and ministries.</p>
+                            <button class="expand-btn">Learn More <i class="fas fa-chevron-right"></i></button>
+                            <div class="card-details">
+                                <p>This business requires investment in quality equipment and skilled team members. Service offerings include sermon series graphics, promotional videos, livestream consulting, and social media management packages.</p>
+                                <a href="business/media-production.html" class="cta-button">Full Business Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Business Idea Card 6 -->
+                    <div class="idea-card">
+                        <div class="card-image">
+                            <span class="card-level">Low Investment</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>Faith-Based Subscription Box</h3>
+                            <div class="idea-stats">
+                                <div class="stat">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>Low Cost</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Scalable</span>
+                                </div>
+                            </div>
+                            <p class="card-description">Create curated monthly subscription boxes with devotional materials, Christian music, faith-building resources, and inspirational products.</p>
+                            <button class="expand-btn">Learn More <i class="fas fa-chevron-right"></i></button>
+                            <div class="card-details">
+                                <p>This business model requires inventory management and fulfillment processes. Different box themes could target various demographics like youth, couples, or worship leaders.</p>
+                                <a href="business/subscription-box.html" class="cta-button">Full Business Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Resources Section -->
+            <section class="resources-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Business Resources</h2>
+                        <p>Download these free templates and guides to help you get started with your Christian business venture.</p>
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <!-- Resource 1 -->
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3>Business Plan Template</h3>
+                            <p>A comprehensive template specifically designed for faith-based businesses with scripture-aligned mission statements.</p>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                        
+                        <!-- Resource 2 -->
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3>Market Research Questionnaire</h3>
+                            <p>Survey templates to help you understand your target audience within the Christian community.</p>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                        
+                        <!-- Resource 3 -->
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <h3>Monetization Strategy Guide</h3>
+                            <p>Ethical approaches to pricing and generating revenue while maintaining ministry impact.</p>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                        
+                        <!-- Resource 4 -->
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h3>Startup Cost Calculator</h3>
+                            <p>Interactive spreadsheet to help you estimate costs and budget for your business launch.</p>
+                            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <span style="color: #4FB3E8; font-weight: 700; font-size: 1.5rem;">E-Major</span><span style="color: white; font-weight: 700; font-size: 1.5rem;">Biznet</span>
+            </div>
+            
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gospel-music.html">Gospel Music</a></li>
+                        <li><a href="biblical-breakdowns.html">Biblical Breakdowns</a></li>
+                        <li><a href="financial-literacy.html">Financial Literacy</a></li>
+                        <li><a href="business-ideas.html">Business Ideas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="resources.html">Free Downloads</a></li>
+                        <li><a href="resources.html#premium">Premium Resources</a></li>
+                        <li><a href="podcast.html">Podcast Episodes</a></li>
+                        <li><a href="bible-teachings.html">Bible Teachings</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">YouTube Channel</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive updates on new content, resources, and business ideas.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 E-Major Biznet. All rights reserved.</p>
+                <div>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+        
+        // Card expand functionality
+        document.querySelectorAll('.expand-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const details = this.nextElementSibling;
+                details.classList.toggle('active');
+                
+                if (details.classList.contains('active')) {
+                    this.innerHTML = 'Show Less <i class="fas fa-chevron-up"></i>';
+                } else {
+                    this.innerHTML = 'Learn More <i class="fas fa-chevron-right"></i>';
+                }
+            });
+        });
+        
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Filter logic would go here
+                // For a complete implementation, we would filter the cards based on data attributes
+                // This is a simplified example
+                const filterValue = this.textContent.trim();
+                console.log(`Filtering by: ${filterValue}`);
+                
+                // Animation for filtered cards
+                document.querySelectorAll('.idea-card').forEach(card => {
+                    card.style.opacity = '0.5';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                    }, 300);
+                });
+            });
+        });
+        
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollElements = document.querySelectorAll('.featured-idea, .section-header, .idea-card, .resource-card');
+            
+            const elementInView = (el, percentageScroll = 100) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= 
+                    ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+                );
+            };
+            
+            const displayScrollElement = (element) => {
+                element.classList.add('scrolled');
+            };
+            
+            const hideScrollElement = (element) => {
+                element.classList.remove('scrolled');
+            };
+            
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 90)) {
+                        displayScrollElement(el);
+                    } else {
+                        hideScrollElement(el);
+                    }
+                });
+            };
+            
+            // Initialize on load
+            handleScrollAnimation();
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+        });
+        
+        // Business model canvas animation placeholder
+        // In a real implementation, this would be a more sophisticated visualization
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.querySelector('.canvas-visualization');
+            canvas.innerHTML = '<div id="canvas-animation">Business Model Canvas Visualization</div>';
+            
+            // Simple animation effect
+            const canvasEl = document.getElementById('canvas-animation');
+            canvasEl.style.opacity = '0';
+            
+            setTimeout(() => {
+                canvasEl.style.transition = 'opacity 1s ease';
+                canvasEl.style.opacity = '1';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
